@@ -13,3 +13,9 @@ eval/llm_run.log
 contracts/plan_history/
 .env
 .DS_Store
+tools/
+data/public_url.txt
+video/out/
+video/node_modules/
+video/.tts/
+video/models/

@@ -10,7 +10,7 @@ import time
 from pathlib import Path
 
 import pandas as pd
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -25,6 +25,41 @@ CACHE = ROOT / "data" / "demo_cache.json"
 
 app = FastAPI(title="Boston 311 Copilot", version="1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+# ---------- public mode: requests arriving through the share tunnel ----------
+# Anyone on the internet can file a request and look around; only the laptop running the app can approve plans,
+# decide reviews, run agents or use the slow local LLM.
+LOCAL_HOSTS = {"localhost", "127.0.0.1", "0.0.0.0", "[::1]"}
+PUBLIC_POST_ALLOWED = {"/intake/classify", "/intake/transcribe", "/scenario", "/agent/ask"}
+PUBLIC_RATE = {"per_minute": 20}
+_hits: dict[str, list[float]] = {}
+
+
+def is_public(request) -> bool:
+    host = (request.headers.get("host") or "").split(":")[0].lower()
+    return "cf-connecting-ip" in request.headers or host not in LOCAL_HOSTS
+
+
+@app.middleware("http")
+async def public_guard(request, call_next):
+    from fastapi.responses import JSONResponse
+    if is_public(request) and request.method not in ("GET", "HEAD", "OPTIONS"):
+        if request.url.path not in PUBLIC_POST_ALLOWED:
+            return JSONResponse({"detail": "This action is only available on the planner's own machine."}, status_code=403)
+        ip = request.headers.get("cf-connecting-ip") or (request.client.host if request.client else "?")
+        now = time.time()
+        recent = [t for t in _hits.get(ip, []) if now - t < 60]
+        if len(recent) >= PUBLIC_RATE["per_minute"]:
+            return JSONResponse({"detail": "Too many requests, please wait a minute."}, status_code=429)
+        _hits[ip] = recent + [now]
+        if int(request.headers.get("content-length") or 0) > 8_000_000:
+            return JSONResponse({"detail": "Upload too large."}, status_code=413)
+    return await call_next(request)
+
+
+def public_url() -> str | None:
+    p = ROOT / "data" / "public_url.txt"
+    return p.read_text().strip() if p.exists() else None
 
 
 def _clean(o):
@@ -70,9 +105,9 @@ def _cache_put(key: str, value):
 # ---------- health ----------
 
 @app.get("/health")
-def health():
+def health(request: Request):
     s = llm.settings()
-    return {"ok": True, "ollama": llm.available(), "models": llm.models(), "intake_model": s["intake_model"],
+    return {"ok": True, "public_url": public_url(), "public_request": is_public(request), "ollama": llm.available(), "models": llm.models(), "intake_model": s["intake_model"],
             "agent_model": s["agent_model"], "intake_model_ready": llm.available(s["intake_model"]),
             "speech": __import__("intake.speech", fromlist=["available"]).available(),
             "as_of_month": tools.current_month()}
@@ -91,8 +126,13 @@ class ClassifyIn(BaseModel):
 
 
 @app.post("/intake/classify")
-def intake_classify(body: ClassifyIn):
+def intake_classify(body: ClassifyIn, request: Request):
     from intake.classify import classify
+    if len(body.text) > 2000 or (body.location_text and len(body.location_text) > 300):
+        raise HTTPException(413, "Message too long.")
+    if is_public(request):
+        body.mode = "fast"  # the local LLM is too slow to share with the internet
+        body.source = "public"
     use_llm = body.mode in ("llm", "cached")
     key = _cache_key("classify", body.text, body.clarification, use_llm, bool(body.image_b64), body.location_text)
     res = _cache_get(key) if body.mode == "cached" and not body.image_b64 else None
@@ -131,6 +171,8 @@ class TranscribeIn(BaseModel):
 def intake_transcribe(body: TranscribeIn):
     """Local Whisper speech-to-text; audio is processed in memory and not stored."""
     from intake import speech
+    if len(body.audio_b64) > 2_600_000:  # ~40 s of 16 kHz mono WAV
+        raise HTTPException(413, "Recording too long.")
     if not speech.available():
         raise HTTPException(503, "Speech-to-text is not installed (pip install faster-whisper).")
     try:
@@ -235,6 +277,29 @@ def scenario_ep(body: ScenarioIn):
     return s
 
 
+@app.get("/replay")
+def replay():
+    """Real 2025 demand replayed month by month: flat vs locked plan vs plan + monitor vs hindsight."""
+    return _json("replay.json")
+
+
+@app.get("/pulse")
+def pulse():
+    """City Pulse: neighborhood on-time layer, grid of open requests, and requests filed in this app."""
+    proc = ROOT / "data" / "processed"
+    if not (proc / "pulse_neighborhoods.geojson").exists():
+        raise HTTPException(404, "Run `python -m data.pulse` first")
+    return {"neighborhoods": json.loads((proc / "pulse_neighborhoods.geojson").read_text()),
+            "grid": json.loads((proc / "pulse_grid.json").read_text()), **pulse_live()}
+
+
+@app.get("/pulse/live")
+def pulse_live():
+    rows = db.rows("select id, ts, type, department, dept_code, queue, neighborhood, lat, lon, status, confidence "
+                   "from intake_log where lat is not null and status in ('routed','clarify') order by ts desc limit 200")
+    return {"filed": rows, "filed_count": len(rows)}
+
+
 @app.get("/scenarios")
 def scenarios_pre():
     return _json("scenarios.json")
@@ -249,9 +314,11 @@ class AskIn(BaseModel):
 
 @app.post("/agent/ask")
 @app.post("/agent/planner")
-def agent_planner(body: AskIn):
+def agent_planner(body: AskIn, request: Request):
     from agents.planner import ask
-    res = ask(body.question, use_llm=body.use_llm)
+    if len(body.question) > 500:
+        raise HTTPException(413, "Question too long.")
+    res = ask(body.question, use_llm=body.use_llm and not is_public(request))
     res.pop("tool_outputs", None)
     return res
 
@@ -273,8 +340,15 @@ class StressIn(BaseModel):
 
 @app.post("/agent/stress-test")
 def agent_stress(body: StressIn):
+    """The search takes ~20 s on CPU, so the result is cached per saved-plan version (the trace stays viewable)."""
     from agents.stress import run_stress_test
-    return run_stress_test(body.focus)
+    key = _cache_key("stress", body.focus, (C / "plan.json").stat().st_mtime)
+    hit = _cache_get(key)
+    if hit:
+        return {**hit, "cached": True}
+    res = run_stress_test(body.focus)
+    _cache_put(key, res)
+    return res
 
 
 class MonitorIn(BaseModel):

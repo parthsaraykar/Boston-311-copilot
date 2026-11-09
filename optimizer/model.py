@@ -48,11 +48,13 @@ def _solver(msg=False):
 
 def solve(demand: dict[str, list[float]], params: dict, target: float | None = None,
           relax: bool = False, fixed: dict | None = None, initial_backlog: dict | None = None,
-          paths: list[dict] | None = None, locked: dict | None = None, lock_until: int = 0) -> dict:
+          paths: list[dict] | None = None, locked: dict | None = None, lock_until: int = 0,
+          max_change_frac: float | None = None) -> dict:
     """demand: {dept: [12 monthly values]}. target: min on-time share (0-1) in each department,
     a float or {dept: float}.
     paths: optional list of demand dicts; one plan is chosen for all of them (robust plan).
     locked + lock_until: keep an existing staffing plan for months < lock_until (mid-year re-plan).
+    max_change_frac: cap hires + releases per department-month at this share of starting crews (HR capacity).
     fixed: {dept: [12 crew counts]} forces a staffing level (used for flat / level baselines).
     Returns the plan dict (see contracts/plan.schema.json)."""
     depts = list(demand)
@@ -94,6 +96,8 @@ def solve(demand: dict[str, list[float]], params: dict, target: float | None = N
                 joined = h[d, t + 1 - L] if t + 1 - L >= 0 else 0
                 m += x[d, t + 1] == x[d, t] + joined - r[d, t], f"balance_{d}_{t}"
             m += r[d, t] <= x[d, t], f"release_le_crew_{d}_{t}"
+            if max_change_frac is not None and not (locked is not None and t < lock_until):
+                m += h[d, t] + r[d, t] <= max(1, round(max_change_frac * x0)), f"change_cap_{d}_{t}"
             capacity = k * (x[d, t] + (s[d, t] if (d, t) in s else 0))
             for p in P:
                 D = paths[p][d][t]

@@ -191,6 +191,7 @@ export default function Resident({ kiosk }: { kiosk: boolean }) {
                         onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); answer.trim() && submit(answer) } }} aria-label="Your answer" />
                       <button type="button" className="btn btn-primary" disabled={!answer.trim() || busy} onClick={() => submit(answer)}>Continue</button>
                     </div>
+                    <button type="button" className="t-xs t-muted underline mt-2" onClick={reset}>Start over</button>
                   </div>
                 </div>
               </div>

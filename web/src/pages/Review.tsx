@@ -3,7 +3,8 @@ import { QRCodeSVG } from 'qrcode.react'
 import { Check, Copy, Inbox, Smartphone } from 'lucide-react'
 import { get, pct, post } from '../api'
 import { timeAgo } from '../AgentTrace'
-import { Card, Empty, PageHeader } from '../ui'
+import { Card, Empty, Note, PageHeader } from '../ui'
+import { useData } from '../data'
 
 export default function Review() {
   const [rows, setRows] = useState<any[]>([])
@@ -13,7 +14,9 @@ export default function Review() {
   const load = () => { get('/review-queue').then(setRows).catch(() => {}); get('/intake/live').then(setLive).catch(() => {}) }
   useEffect(() => { load(); get('/intake/categories').then(setCats).catch(() => {}); const id = setInterval(load, 6000); return () => clearInterval(id) }, [])
   async function decide(id: string, decision: string, type?: string) { await post(`/review-queue/${id}`, { decision, type }); load() }
-  const url = `${window.location.origin}${window.location.pathname}#file`
+  const { health } = useData()
+  const url = health?.public_url ? `${health.public_url}/#file` : `${window.location.origin}${window.location.pathname}#file`
+  const localOnly = !health?.public_url && ['localhost', '127.0.0.1'].includes(window.location.hostname)
 
   return (
     <div>
@@ -61,6 +64,7 @@ export default function Review() {
                 <p className="t-xs t-muted break-all">{url}</p>
               </div>
             </div>
+            {localOnly && <div className="mt-3"><Note>This link only works on this laptop. Run <code>make share</code> to get a public https link: the QR code switches to it automatically, and phones can use the microphone.</Note></div>}
           </Card>
           <Card title="Recent requests" description={live ? `${live.total_filed} filed in this app` : ''} bodyClass="p-0">
             {!live?.recent?.length ? <Empty title="Nothing yet">Requests filed from the resident form appear here.</Empty> : (

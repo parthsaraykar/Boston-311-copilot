@@ -122,6 +122,35 @@ pick if we knew.
 - **Employee work smoothing:** moving 30% of employee-logged work out of above-average months into quieter months
   saves **$408k a year** and cuts the Parks peak from 43 to 38 crews.
 
+## 5b. Proof on real data: the 2025 replay
+
+What if Boston had run this in 2025? We replay the **real 2025 demand** month by month and score four strategies
+on it. The plan starts from the January forecast (trained on 2022–24). In the monitored strategy, the shipped
+Monitor rule runs at the end of each month: when a department's demand leaves the forecast band, or year to date
+is more than 8% off, it re-plans the remaining months. Past months stay fixed, and hires still need a month of
+training.
+
+| Strategy, real 2025 demand | Cost | On time | Depts ≥ 85% | Worst dept |
+|---|---|---|---|---|
+| Today's crews all year | $18.39M | 78.5% | 2/4 | Transportation 45.0% |
+| Optimised plan, never changed | $17.12M | 96.1% | 3/4 | Inspectional Services 70.6% |
+| **Optimised plan + monitor** | **$17.86M** | **89.5%** | 3/4 | Parks 84.6% |
+| Perfect hindsight (lower bound) | $16.03M | 89.8% | 4/4 | Inspectional Services 85.5% |
+
+- **Against today's crews,** the monitored plan saves **$0.53M** and lifts on-time from 78.5% to 89.5%.
+  Transportation goes from 45% to 98%, and every department ends within half a point of target.
+- **The plan that never changes is cheaper, for the wrong reason.** Demand fell well under forecast (Public Works
+  −16%, Parks −26%), so it was overstaffed in those two departments. It still left Inspectional Services at 71%,
+  where July demand came in above the band.
+- **The monitor's weakness is churn.** It re-planned in all 11 months, and severance reached $1.82M. Public Works
+  swung from 53 to 38 to 54 crews as the month-to-month correction moved. The $1.82M gap to perfect hindsight is
+  the value of a better forecast.
+- **Rule variants, for transparency.** We also ran YTD-only, persistent-drift, target-margin and HR-capacity caps
+  on both a 2024 replay and 2025. The 2024 replay uses a forecast trained through 2023 and crews calibrated on 2023.
+  A 2024-only selection would pick the 10% change cap; in 2025 that is $1.1M cheaper but lets Parks and
+  Inspectional Services fall to 71–72%. We report the rule as shipped, fixed before the replay was built, rather
+  than tuning it on the year we report.
+
 ## 6. Intake assistant
 
 **Pipeline:**

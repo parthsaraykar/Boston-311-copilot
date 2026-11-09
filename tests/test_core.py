@@ -151,3 +151,21 @@ def test_api_smoke():
         assert c.get(path).status_code == 200, path
     r = c.post("/intake/classify", json={"text": "downed wire sparking on Washington St", "file": False})
     assert r.json()["status"] == "emergency"
+
+
+def test_public_visitors_cannot_change_the_plan():
+    from fastapi.testclient import TestClient
+    from api.main import app
+    c = TestClient(app)
+    public = {"cf-connecting-ip": "203.0.113.7"}
+    assert c.post("/plan/approve/x", headers=public).status_code == 403
+    assert c.post("/agent/monitor/run", json={}, headers=public).status_code == 403
+    r = c.post("/intake/classify", json={"text": "streetlight out on my corner", "mode": "llm", "file": False}, headers=public)
+    assert r.status_code == 200 and r.json()["mode"] != "llm"  # the slow local LLM isn't offered to the internet
+
+
+def test_replay_contract():
+    r = json.loads((ROOT / "contracts" / "replay.json").read_text())
+    assert set(r["strategies"]) == {"flat", "locked", "monitored", "hindsight"}
+    # perfect hindsight is a lower bound on cost among plans that meet the target
+    assert r["strategies"]["hindsight"]["totals"]["total_cost"] <= r["strategies"]["monitored"]["totals"]["total_cost"]

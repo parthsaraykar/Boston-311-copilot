@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import {
-  Activity, BarChart3, Bot, ClipboardCheck, FlaskConical, Inbox, Menu, MessageSquareText, Moon, ShieldAlert, Sun, Type, X,
+  Activity, BarChart3, Bot, History, Map as MapIcon, ClipboardCheck, FlaskConical, Inbox, Menu, MessageSquareText, Moon, ShieldAlert, Sun, Type, X,
 } from 'lucide-react'
 import { DataProvider, useData } from './data'
 import Resident from './pages/Resident'
@@ -10,16 +10,20 @@ import Agents from './pages/Agents'
 import Risk from './pages/Risk'
 import Review from './pages/Review'
 import Evaluation from './pages/Evaluation'
+import Replay from './pages/Replay'
+import Pulse from './pages/Pulse'
 import AskDrawer from './AskDrawer'
 
-type Route = 'resident' | 'plan' | 'scenarios' | 'agents' | 'risk' | 'review' | 'eval'
+type Route = 'resident' | 'pulse' | 'plan' | 'replay' | 'scenarios' | 'agents' | 'risk' | 'review' | 'eval'
 const NAV: { group: string; items: { id: Route; label: string; icon: ReactNode }[] }[] = [
   { group: 'Intake', items: [
     { id: 'resident', label: 'Report a problem', icon: <MessageSquareText /> },
     { id: 'review', label: 'Review queue', icon: <Inbox /> },
+    { id: 'pulse', label: 'City pulse', icon: <MapIcon /> },
   ] },
   { group: 'Planning', items: [
     { id: 'plan', label: '2025 crew plan', icon: <BarChart3 /> },
+    { id: 'replay', label: '2025 replay', icon: <History /> },
     { id: 'scenarios', label: 'Scenarios', icon: <FlaskConical /> },
     { id: 'risk', label: 'Risk & equity', icon: <ShieldAlert /> },
     { id: 'agents', label: 'Agents', icon: <Bot /> },
@@ -63,7 +67,7 @@ function Shell() {
 
   const page = {
     resident: <Resident kiosk={kiosk} />, plan: <PlanOverview />, scenarios: <Scenarios />, agents: <Agents />,
-    risk: <Risk />, review: <Review />, eval: <Evaluation />,
+    risk: <Risk />, review: <Review />, eval: <Evaluation />, replay: <Replay />, pulse: <Pulse />,
   }[route]
 
   if (kiosk) {
@@ -146,6 +150,8 @@ function SystemStatus({ health }: { health: any }) {
       <div className="flex justify-between t-muted"><span>Local LLM</span><span>{health?.intake_model_ready ? health.intake_model : 'off'}</span></div>
       <div className="flex justify-between t-muted"><span>Speech-to-text</span><span>{health?.speech ? 'Whisper (local)' : 'off'}</span></div>
       <div className="flex justify-between t-muted"><span>Data</span><span>311 · 2022–2025</span></div>
+      {health?.public_url && <div className="flex justify-between t-muted"><span>Sharing</span><span style={{ color: 'var(--good)' }}>public link on</span></div>}
+      {health?.public_request && <div className="t-muted pt-1">View-only: planner actions run on the host laptop.</div>}
     </div>
   )
 }

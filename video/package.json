@@ -1,0 +1,7 @@
+{
+  "name": "boston-311-copilot-video",
+  "private": true,
+  "type": "module",
+  "scripts": { "make": "node make_video.mjs" },
+  "dependencies": { "puppeteer-core": "^24.0.0" }
+}

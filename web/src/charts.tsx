@@ -216,3 +216,49 @@ export function CurveChart({ curve, height = 220 }: { curve: any[]; height?: num
     </ResponsiveContainer>
   )
 }
+
+/** Cumulative cost through the year for each strategy (one axis, ≤4 series, direct legend). */
+export function CumulativeCostChart({ strategies, order, height = 260 }: { strategies: any; order: { key: string; label: string; color: string; dashed?: boolean }[]; height?: number }) {
+  const t = useTokens(CHART_TOKENS)
+  const data = MONTHS.map((m, i) => {
+    const row: any = { month: m }
+    for (const o of order) {
+      const rows = strategies[o.key].monthly.filter((r: any) => r.month <= i + 1)
+      row[o.key] = rows.reduce((s: number, r: any) => s + r.cost, 0)
+    }
+    return row
+  })
+  return (
+    <ResponsiveContainer width="100%" height={height}>
+      <LineChart data={data} margin={{ top: 8, right: 16, left: 8, bottom: 0 }}>
+        <CartesianGrid stroke={t['--grid']} vertical={false} />
+        <XAxis dataKey="month" {...axis(t)} />
+        <YAxis {...axis(t)} width={56} tickFormatter={(v) => `$${(v / 1e6).toFixed(0)}M`} />
+        <Tooltip content={<TT fmt={moneyM} title={(l: string) => `Cost through ${l}`} />} />
+        <Legend itemSorter={null} iconSize={9} wrapperStyle={{ fontSize: 12, paddingTop: 4 }} formatter={(v: any) => <span style={{ color: t['--text-2'] }}>{v}</span>} />
+        {order.map((o) => <Line isAnimationActive={false} key={o.key} dataKey={o.key} name={o.label} stroke={t[o.color] || o.color}
+          strokeWidth={2} strokeDasharray={o.dashed ? '4 3' : undefined} dot={false} activeDot={{ r: 4 }} />)}
+      </LineChart>
+    </ResponsiveContainer>
+  )
+}
+
+/** Crews per month: the January plan vs what the monitor ended up running, against actual demand ÷ crew output. */
+export function CrewCompareChart({ plan, monitored, needed, dept, height = 220 }: { plan: number[]; monitored: number[]; needed: number[]; dept: string; height?: number }) {
+  const t = useTokens(CHART_TOKENS)
+  const data = MONTHS.map((m, i) => ({ month: m, plan: plan[i], monitored: monitored[i], needed: Math.round(needed[i] * 10) / 10 }))
+  return (
+    <ResponsiveContainer width="100%" height={height}>
+      <LineChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+        <CartesianGrid stroke={t['--grid']} vertical={false} />
+        <XAxis dataKey="month" {...axis(t)} />
+        <YAxis {...axis(t)} width={36} allowDecimals={false} />
+        <Tooltip content={<TT fmt={(v: number) => v.toFixed(0)} />} />
+        <Legend itemSorter={null} iconSize={9} wrapperStyle={{ fontSize: 12, paddingTop: 4 }} formatter={(v: any) => <span style={{ color: t['--text-2'] }}>{v}</span>} />
+        <Line isAnimationActive={false} dataKey="needed" name="Crews actual demand needed" stroke={t['--neutral']} strokeWidth={2} strokeDasharray="4 3" dot={false} />
+        <Line isAnimationActive={false} dataKey="plan" name="January plan" stroke={t['--text-2']} strokeWidth={2} dot={false} />
+        <Line isAnimationActive={false} dataKey="monitored" name="With monitor" stroke={t[DEPT_VAR[dept]]} strokeWidth={2.5} dot={{ r: 3 }} />
+      </LineChart>
+    </ResponsiveContainer>
+  )
+}
