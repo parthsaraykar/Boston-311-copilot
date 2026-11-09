@@ -12,9 +12,9 @@ Before: `make reset && make demo-cache`, start `make api`, then `make share` for
    - Show the QR code (Review page): judges file live from their phones over the public link, and their pins
      appear on City pulse.
 3. **1:45 — Planner tab (90 s).**
-   - KPIs: $17.34M vs $19.46M flat, saving $2.13M; on time 75% → 92.5%.
-   - Drag the on-time target and watch the frontier point move. Set demand +10%: keeping the plan costs $19.86M
-     at 55% on time.
+   - KPIs: $13.57M vs $18.87M flat, saving $5.30M; on time 60% → 91.5%.
+   - Drag the on-time target and watch the frontier point move. Set demand +10%: keeping the plan drops on-time
+     to 47%.
    - Ask "Why hire Parks crews in April?": the agent answers that the plan uses seasonal crews from May (11), and
      that one more crew in April saves $9.2k against $10.8k a crew-month. It lists its sources.
 4. **3:15 — Agents at work (60 s).**
@@ -22,8 +22,8 @@ Before: `make reset && make demo-cache`, start `make api`, then `make share` for
      brute-force grid in 13 of 24 probes.
    - Run monitor (through Jun): Public Works −16% YTD, Parks June under the band, so it drafts a re-plan.
    - Approve it, then open the trace.
-5. **4:00 — 2025 replay (20 s).** On real 2025 demand, plan + monitor beats today's crews ($17.86M vs $18.39M; on time
-   78.5% → 89.5%; Transportation 45% → 98%). Be upfront about the churn.
+5. **4:00 — 2025 replay (20 s).** On real 2025 demand, plan + monitor keeps all 4 departments at target
+   ($14.19M vs $15.11M for January crews; on time 70% → 90%). Be upfront about the churn.
 6. **4:20 — Proof (40 s).** Evaluation tab: 94% type / 97% department, 100% of emergencies caught, accuracy by
    language (be honest: Haitian Creole is weak), and the honesty check at 90%. Toggle to the LLM column: the local
    3B model scored 82%, so we route with retrieval. We measured it instead of assuming the LLM is better. Close on the loop: routed requests

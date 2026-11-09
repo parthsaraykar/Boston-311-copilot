@@ -9,9 +9,22 @@
 
 <a href="media/boston-311-copilot-demo.mp4"><img src="media/demo-preview.gif" alt="Boston 311 Copilot demo preview: routing a request, the crew plan, agents approving a re-plan, the 2025 replay" width="100%"></a>
 
-▶ **[Watch the full demo with narration](media/boston-311-copilot-demo.mp4)** (2:55, 1080p). The animation above is a silent 30-second preview. It covers resident intake in any language
-and by voice, the 911 safety gate, the 2025 crew plan, "Ask the plan", the agents, the 2025 replay on real data,
-City pulse and the evaluation. The video is recorded straight from the running app with `make video`.
+▶ **[Watch the full demo with narration](media/boston-311-copilot-demo.mp4)** (under 3 min, 1080p). The animation
+above is a silent preview. The video covers the product (intake, the 911 safety gate, the 2025 crew plan,
+"Ask the plan", scenarios, agents, the 2025 replay, evaluation), the architecture, and the part we're most proud
+of. It is recorded straight from the running app with `make video`.
+
+## Submission contents
+
+| Deliverable | Where |
+|---|---|
+| Jupyter notebook, every cell run with outputs | [`notebook/Boston_311_Copilot.ipynb`](notebook/Boston_311_Copilot.ipynb) |
+| Analysis report (decisions, assumptions, sensitivity) | [`report/report.md`](report/report.md) |
+| Month-by-month 2025 staffing table | notebook §3, `contracts/plan.json`, and the app's "2025 crew plan" page |
+| 3-minute demo video | [`media/boston-311-copilot-demo.mp4`](media/boston-311-copilot-demo.mp4) |
+| Architecture diagram | [below](#architecture) |
+| Team contributions · How we used AI | [below](#team-contributions) |
+| GenAI techniques used | API calls (local LLM via Ollama), prompt engineering, structured output (JSON schema + Pydantic), RAG (retrieval over the 170 real request types), agents (tool use, grounding check, human approval) |
 
 ## What it is
 
@@ -32,9 +45,11 @@ needs no LLM, so the demo works even with Ollama off.
 
 | | |
 |---|---|
-| Optimised plan, 2025 | **$17.34M**, **92.5%** of requests closed within the month (≥85% in every department) |
-| Flat staffing (today's crews all year) | $19.46M, 75.2% on time → **saves $2.13M** |
-| **2025 replay** (real demand, month by month) | optimised plan + monitor: **$17.86M, 89.5% on time** vs today's crews $18.39M, 78.5% (Transportation 45% → 98%); a never-changed plan leaves Inspectional Services at 71% |
+| Optimised plan, 2025 (brief's crew inputs) | **$13.57M**, **91.5%** of requests closed on time (≥85% in every department) |
+| Flat staffing (January 2025 crews all year) | $18.87M, 59.7% on time → **saves $5.30M** |
+| What the plan does | Transportation 18 → 23 crews (hires Jan–Mar); Parks adds 1–10 seasonal crews Apr–Aug; Public Works 50 → 52; Inspectional Services 16 → 17 |
+| Sensitivity | demand +20%: keeping the plan drops on-time to 25%, re-planning keeps 89%; real-data snowstorm +$0.86M, heat wave +$0.43M if not re-planned |
+| **2025 replay** (real demand, month by month) | plan + monitor: **all 4 departments at target**, $14.19M, 89.8% on time, vs January crews kept flat: $15.11M, 70.2% |
 | Forecast, 2025 holdout | Transportation 4.7% WAPE, Inspectional Services 6.1%, Public Works 19.7%, Parks 42.4% (Parks volume really fell 26% in 2025) |
 | Intake, 201 hand-labelled messages | retrieval: **94% type / 97% department** accuracy (TF-IDF baseline 83%; 90% on messages that aren't near-copies of card examples). The local `qwen2.5:3b` LLM scored **82% / 89%**, so retrieval is the default router |
 | Safety | **100%** of emergencies caught, 0 false alarms; 100% of injection / off-topic refused |
@@ -87,6 +102,39 @@ client can call `get_plan`, `explain_month`, `run_scenario` and the rest.
 
 ## Architecture
 
+```mermaid
+flowchart LR
+  subgraph Resident["Resident intake"]
+    M["Message<br/>text · photo · voice"] --> SG["Safety gate<br/>911 · injection · off-topic"]
+    SG --> PS["Privacy scrub"]
+    PS --> RAG["RAG: top 10 of 72 type cards<br/>(170 type/dept/queue combos)<br/>multilingual MiniLM + TF-IDF"]
+    RAG --> LLM["Local LLM (Ollama qwen2.5:3b)<br/>JSON-schema structured output<br/>+ Pydantic validation"]
+    LLM --> LOC["Geocode → neighborhood<br/>→ district queue"]
+    V["Voice"] -.-> W["Whisper (local)"] -.-> M
+  end
+  subgraph Plan["Planning"]
+    D[("311 data 2022–2025<br/>DuckDB")] --> F["Forecast<br/>naive vs ETS, backtest"]
+    F --> IP["Integer program<br/>PuLP + CBC"]
+    IP --> SC["Scenarios · 100 years<br/>storm · heat wave · replay"]
+  end
+  LOC -- "filed request = +1 live demand" --> DB[("SQLite: intake log,<br/>traces, proposals")]
+  subgraph Agents["Agents (one tool registry, also MCP)"]
+    A1["Intake"]
+    A2["Planner"]
+    A3["Stress test"]
+    A4["Monitor"]
+  end
+  DB --> A4
+  IP --> A2
+  A4 -- "draft re-plan" --> H{{"Person approves"}} --> IP
+  API["FastAPI"] --- UI["React UI<br/>Resident · Planner · Evaluation"]
+  Resident --- API
+  Plan --- API
+  Agents --- API
+```
+
+Text version:
+
 ```
             Resident (text / photo / voice)                         Planner
                         │                                              │
@@ -111,6 +159,36 @@ client can call `get_plan`, `explain_month`, `run_scenario` and the rest.
                  api/main.py (FastAPI) ── web/ (React, Tailwind, Recharts, Leaflet)
 ```
 
+## Team contributions
+
+Team 4, IE 5374 16753 ST: Applied Generative AI.
+
+| Member | Contributions |
+|---|---|
+| Parth Sanjay Saraykar | _to be filled in by the team_ |
+| Rutuja Kalidasrao Jadhav | _to be filled in by the team_ |
+| Samruddhi Bansod | _to be filled in by the team_ |
+
+## How we used AI
+
+We used AI tools in building this project, as the course allows, and mark what they produced here.
+
+- **AI coding assistant: Claude Code (Anthropic).** The team directed it through a conversation: we set the plan,
+  the scope and the decisions, chose among options, and reviewed results. It wrote **almost all of the code in this
+  repo** (data pipeline, forecast, optimizer, scenarios, intake assistant, agents, API, React UI, tests, video
+  recorder), the notebook (`scripts/build_notebook.py`), the report (`report/`), this README, the 72 category cards
+  (`intake/cards_source.yaml`) and the test set (`eval/build_testset.py`). Treat every file as AI-generated
+  unless a team member says otherwise in the contributions table above.
+- **AI inside the product.** The app itself uses local models: `qwen2.5:3b` (Ollama) for classification and agent
+  tool calls, `moondream` for photos, Whisper for speech-to-text, multilingual MiniLM for retrieval, and Kokoro
+  for the video narration.
+- **Checks we made on AI output.** The test set was written and labelled before any model was run on it. A leakage
+  check reports accuracy without test messages that are near-copies of card examples. Every number in the report
+  and video comes from the code's own outputs (`contracts/`, `eval/eval.json`), and the agents' numbers are
+  checked against their tool results automatically.
+- **Responsibility.** The team is responsible for checking that everything submitted is accurate and follows
+  Northeastern's Academic Integrity and Use of AI policy.
+
 ## Repo layout
 
 | Folder | What's in it |
@@ -125,10 +203,11 @@ client can call `get_plan`, `explain_month`, `run_scenario` and the rest.
 | `web/` | Resident, Planner and Evaluation tabs |
 | `contracts/` | JSON schemas + the real output files the UI reads |
 | `eval/` | labelled test set (`build_testset.py`), `run_eval.py`, `eval.json`, per-case results |
+| `notebook/` | the submission notebook, executed (`scripts/build_notebook.py` regenerates it) |
 | `report/` | report, model card, slide outline, demo script |
 | `video/` | `make_video.mjs` (records the demo from the live app), `tts.py` (Kokoro narration) |
 | `media/` | the demo video and its thumbnail |
-| `params.yaml` | every planning input, marked **brief** or **assumed** |
+| `params.yaml` | every planning input; crew capacity, cost and January crews are the brief's, as stated |
 
 ## Endpoints
 

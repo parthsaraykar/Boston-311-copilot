@@ -255,6 +255,7 @@ def plan_frontier():
 class ScenarioIn(BaseModel):
     demand_mult: float = 1.0
     storm: bool = False
+    heatwave: bool = False
     late_cost: float | None = None
     severance_rate: float | None = None
     seasonal_premium: float | None = None
@@ -267,12 +268,12 @@ class ScenarioIn(BaseModel):
 def scenario_ep(body: ScenarioIn):
     from scenarios.scenario import scenario
     overrides = {k: v for k, v in body.model_dump().items()
-                 if k not in ("demand_mult", "storm", "target") and v is not None}
+                 if k not in ("demand_mult", "storm", "heatwave", "target") and v is not None}
     key = _cache_key("scenario", body.model_dump(), (C / "plan.json").stat().st_mtime)
     hit = _cache_get(key)
     if hit:
         return hit
-    s = scenario(demand_mult=body.demand_mult, storm=body.storm, overrides=overrides, target=body.target)
+    s = scenario(demand_mult=body.demand_mult, storm=body.storm, heatwave=body.heatwave, overrides=overrides, target=body.target)
     _cache_put(key, s)
     return s
 

@@ -71,8 +71,9 @@ def solve(demand: dict[str, list[float]], params: dict, target: float | None = N
     x = {(d, t): pulp.LpVariable(f"x_{i}_{t}", 0, cat=cat) for i, d in enumerate(depts) for t in T}
     h = {(d, t): pulp.LpVariable(f"h_{i}_{t}", 0, cat=cat) for i, d in enumerate(depts) for t in T}
     r = {(d, t): pulp.LpVariable(f"r_{i}_{t}", 0, cat=cat) for i, d in enumerate(depts) for t in T}
+    season = set(params.get("seasonal_months", range(1, 13)))  # brief: Parks seasonals April-October only
     s = {(d, t): pulp.LpVariable(f"s_{i}_{t}", 0, cat=cat) for i, d in enumerate(depts) for t in T
-         if params["departments"][d].get("seasonal_allowed")}
+         if params["departments"][d].get("seasonal_allowed") and (t + 1) in season}
     q = {(p, d, t): pulp.LpVariable(f"q_{p}_{i}_{t}", 0) for p in P for i, d in enumerate(depts) for t in T}
     B = {(p, d, t): pulp.LpVariable(f"B_{p}_{i}_{t}", 0) for p in P for i, d in enumerate(depts) for t in T}
     L30 = {(p, d, t): pulp.LpVariable(f"L30_{p}_{i}_{t}", 0) for p in P for i, d in enumerate(depts) for t in T}

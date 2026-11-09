@@ -72,8 +72,8 @@ def memo_pdf() -> bytes:
             f"${scen['smoothing']['annual_saving']:,.0f} a year.", body),
         Spacer(1, 6),
         Paragraph(
-            "<b>Assumptions.</b> Crew cost $130,000 a year in every department (brief gives Public Works only); requests per "
-            "crew per month and starting crews are estimated from 2024 data. A late request costs $20 and $100 more after "
+            "<b>Assumptions.</b> Crew capacity, crew costs and January 2025 crews are the planning assumptions given in the "
+            "brief; a crew works 21 days a month. A late request costs $20 and $100 more after "
             "30 days. See the report for the full method.", body),
     ]
     doc.build(els)

@@ -80,9 +80,12 @@ def history_fit(params: dict) -> dict:
 
 def run(target: float | None = None) -> dict:
     params = load_params()
-    crews0 = calibrate(params)
-    write_starting_crews(crews0)
-    params = load_params()
+    if params.get("starting_crews_fixed"):
+        crews0 = dict(params["starting_crews"])  # given by the brief
+    else:
+        crews0 = calibrate(params)
+        write_starting_crews(crews0)
+        params = load_params()
     target = params["default_on_time_target"] if target is None else target
     demand = forecast_demand()
 

@@ -6,7 +6,7 @@
 3. **Data**: 1.18M requests 2022–25; 170 combinations = 72 types × district queues; 42% logged by city employees.
 4. **Forecast**: model chosen on 2024, scored on 2025 (Transportation 4.7%, Inspectional Services 6.1% WAPE); a
    forecast-vs-actual chart; the Parks and Public Works level drops called out.
-5. **Optimizer**: formulation in one box; $17.34M vs $19.46M flat (−$2.13M); 92.5% on time; Parks seasonals;
+5. **Optimizer**: formulation in one box; $13.57M vs $18.87M flat (−$5.30M); 91.5% on time; Parks seasonals Apr–Aug;
    shadow prices.
 6. **Risk**: locked vs re-planned table; storm from real data; 100 years (5 / 100 → robust 16 / 100); tornado;
    smoothing saves $408k.

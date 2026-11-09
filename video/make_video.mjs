@@ -51,7 +51,7 @@ function tts(text, file) {
 // ---------- the story ----------
 const SCENES = [
   { id: 'intro', tag: null, title: ['Boston 311 Copilot', 'Route every request right, then staff for it.'],
-    say: 'Boston’s 311 line takes about eight hundred and forty requests a day. Whether they get fixed on time comes down to two things: sending each one to the right crew, and having enough crews when demand peaks. Boston 311 Copilot does both.',
+    say: 'Boston’s 311 line gets about eight hundred and forty requests a day. Getting them fixed on time takes two things: the right crew for each request, and enough crews when demand peaks. Boston 311 Copilot does both.',
     run: async (a) => { await a.go('#resident') } },
   { id: 'route', tag: 'Resident intake',
     say: 'A resident describes the problem in their own words. The copilot matches it to one of a hundred and seventy city service queues, uses the location to pick the Jamaica Plain district crew, and shows the expected fix time.',
@@ -60,14 +60,6 @@ const SCENES = [
       await a.clickText('Submit request')
       await a.waitText('Request filed')
       await a.hover('.leaflet-container')
-    } },
-  { id: 'spanish', tag: 'Any language',
-    say: 'It works in other languages too. This message in Spanish lands in the same pothole queue.',
-    run: async (a) => {
-      await a.clickText('Start over')
-      await a.type('#problem', 'Un bache enorme en la calle Centre en Jamaica Plain, peligroso para los carros')
-      await a.clickText('Submit request')
-      await a.waitText('Request filed')
     } },
   { id: 'voice', tag: 'Voice, transcribed on the device',
     say: 'Residents can also just talk. Speech is transcribed by a local model, so nothing leaves the city’s servers and no audio is stored.',
@@ -91,7 +83,7 @@ const SCENES = [
       await a.waitText('Call 911 now')
     } },
   { id: 'plan', tag: '2025 crew plan',
-    say: 'On the planning side, the copilot builds the cheapest twenty twenty-five crew plan for four departments. It costs seventeen point three million dollars, two point one million less than keeping today’s crews, and closes ninety-two percent of requests on time instead of seventy-five.',
+    say: 'On the planning side, it builds the cheapest twenty twenty-five crew plan for four departments, using the brief’s crew costs and capacities. It costs thirteen point six million dollars, five point three million less than keeping January’s crews, and closes ninety-two percent of requests on time instead of sixty.',
     run: async (a) => {
       await a.go('#plan')
       await a.waitText('Demand and staffing by month')
@@ -111,7 +103,7 @@ const SCENES = [
       await a.click('[aria-label="Close panel"]')
     } },
   { id: 'scenario', tag: 'What if?',
-    say: 'What if demand comes in ten percent higher? Keeping the plan would drop on time to fifty-five percent. Re-planning brings it back to ninety-one.',
+    say: 'What if demand comes in ten percent higher? Keeping the plan would drop on time to forty-seven percent. Re-planning brings it back to ninety.',
     run: async (a) => {
       await a.go('#scenarios')
       await a.waitText('Inputs')
@@ -120,7 +112,7 @@ const SCENES = [
       await a.waitText('Keep the saved plan')
     } },
   { id: 'agents', tag: 'Agents, with a human in charge',
-    say: 'Agents do the routine watching. The stress test agent hunts for the scenarios that hurt the plan most. The monitor compares live demand with the forecast, spots the drift, and drafts a re-plan, which only takes effect when a person approves it.',
+    say: 'Agents do the routine watching. The stress test agent hunts for the cases that hurt the plan most. The monitor spots demand drifting from the forecast and drafts a re-plan, which only takes effect when a person approves it.',
     run: async (a) => {
       await a.go('#agents')
       await a.waitText('Stress test')
@@ -133,20 +125,12 @@ const SCENES = [
       await a.clickText('Approve')
     } },
   { id: 'replay', tag: 'Proof on real data',
-    say: 'Does it hold up? Replaying real twenty twenty-five demand month by month, the plan with the monitor would have saved half a million dollars and lifted on time from seventy-eight to ninety percent, taking Transportation from forty-five to ninety-eight percent.',
+    say: 'Does it hold up? Replaying real twenty twenty-five demand month by month, the plan with the monitor meets the target in all four departments, lifts on time from seventy to ninety percent, and costs nine hundred thousand dollars less than keeping January’s crews.',
     run: async (a) => {
       await a.go('#replay')
       await a.waitText('Cumulative cost through 2025')
       await sleep(2500)
       await a.scrollBy(620)
-    } },
-  { id: 'pulse', tag: 'City pulse',
-    say: 'City pulse shows where requests are open right now, how every neighborhood has been served, and new reports as they arrive.',
-    run: async (a) => {
-      await a.go('#pulse')
-      await a.waitText('Least on time')
-      await sleep(2200)
-      await a.clickText('Longwood')
     } },
   { id: 'eval', tag: 'Tested, not assumed',
     say: 'And it is tested. On two hundred and one hand-labelled messages it picks the right request type ninety-four percent of the time, against eighty-three for a keyword baseline.',
@@ -156,6 +140,12 @@ const SCENES = [
       await sleep(2500)
       await a.scrollBy(520)
     } },
+  { id: 'arch', tag: 'Architecture', slide: 'arch',
+    say: 'Under the hood, a message passes a safety gate, then retrieval narrows a hundred and seventy queues to ten candidates, and a local language model picks one as validated structured output. On the planning side, a forecast feeds an integer program, and four agents share one tool registry, with every number they say checked against the tools.',
+    run: async () => {} },
+  { id: 'proud', tag: 'What we’re most proud of', slide: 'proud',
+    say: 'What we’re most proud of: we measured instead of assuming. Our tests showed plain retrieval beat the local language model, so retrieval became the default. And we proved the plan on real twenty twenty-five data, not just on our own forecast.',
+    run: async () => {} },
   { id: 'outro', tag: null, title: ['Boston 311 Copilot', 'Runs on a laptop with free, local models · github.com/parthsaraykar/Boston-311-copilot'],
     say: 'Boston 311 Copilot. Route every request right, then staff for it.',
     run: async () => {} },
@@ -182,7 +172,21 @@ const OVERLAY = () => {
   const cap = document.createElement('div'); cap.id = 'vx-cap'
   const title = document.createElement('div'); title.id = 'vx-title'
   document.body.append(cur, rip, cap, title)
+  const box = (t, sub, hl) => `<div style="background:${hl ? '#fff' : 'rgba(255,255,255,.12)'};color:${hl ? '#1f4fd8' : '#fff'};border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 18px;min-width:190px;text-align:center"><div style="font:600 21px Geist">${t}</div>${sub ? `<div style="font:400 15px Geist;opacity:.85;margin-top:3px">${sub}</div>` : ''}</div>`
+  const arrow = '<div style="font:400 30px Geist;opacity:.8">→</div>'
+  const row = (items) => `<div style="display:flex;align-items:center;gap:14px;justify-content:center">${items.join(arrow)}</div>`
+  const SLIDES = {
+    arch: `<div style="font:700 46px Geist;letter-spacing:-.02em;margin-bottom:26px">Architecture</div>
+      <div style="font:600 17px Geist;opacity:.75;margin:0 0 10px;letter-spacing:.08em">RESIDENT INTAKE</div>
+      ${row([box('Message', 'text · photo · voice'), box('Safety gate', '911 · injection'), box('RAG', 'top 10 of 170 queues'), box('Local LLM', 'JSON schema + Pydantic', true), box('Location', '→ district crew')])}
+      <div style="font:600 17px Geist;opacity:.75;margin:30px 0 10px;letter-spacing:.08em">PLANNING</div>
+      ${row([box('311 data', '2022–2025'), box('Forecast', 'ETS vs naive'), box('Integer program', 'PuLP + CBC', true), box('Scenarios', '±20%, storms, heat'), box('Agents', 'tools · grounding · approval')])}
+      <div style="font:500 18px Geist;opacity:.85;margin-top:30px">FastAPI · React · DuckDB · Ollama (qwen2.5) · Whisper · one tool registry, also served over MCP</div>`,
+    proud: `<div style="font:700 46px Geist;letter-spacing:-.02em;margin-bottom:34px">What we’re most proud of</div>
+      <div style="display:flex;gap:22px">${box('94% vs 82%', 'retrieval beat the local LLM, so we made it the default', true)}${box('4 / 4', 'departments on target, on real 2025 demand')}${box('15 / 15', 'emergencies caught, zero false alarms')}</div>`,
+  }
   window.__vx = {
+    slide: (k) => { cur.style.opacity = '0'; title.innerHTML = `<div style="text-align:center;max-width:1500px">${SLIDES[k]}</div>`; title.style.opacity = '1' },
     move: (x, y) => { cur.style.transform = `translate(${x - 4}px, ${y - 3}px)` },
     ripple: (x, y) => { rip.style.left = x + 'px'; rip.style.top = y + 'px'; rip.classList.remove('go'); void rip.offsetWidth; rip.classList.add('go') },
     caption: (tag, line) => {
@@ -253,12 +257,13 @@ function actions(page) {
 // captions show numbers the way people read them on screen; the voice keeps the spoken form
 const CAPTION_NUMBERS = [
   ['eight hundred and forty', '840'], ['a hundred and seventy', '170'], ['two hundred and one', '201'],
-  ['twenty twenty-five', '2025'], ['seventeen point three million dollars', '$17.3M'], ['two point one million', '$2.1M'],
-  ['ninety-two percent', '92%'], ['instead of seventy-five', 'instead of 75%'], ['ten percent', '10%'],
-  ['fifty-five percent', '55%'], ['back to ninety-one', 'back to 91%'], ['half a million dollars', '$0.5M'],
-  ['from seventy-eight to ninety percent', 'from 78% to 90%'], ['from forty-five to ninety-eight percent', 'from 45% to 98%'],
+  ['twenty twenty-five', '2025'], ['thirteen point six million dollars', '$13.6M'], ['five point three million', '$5.3M'],
+  ['ninety-two percent', '92%'], ['instead of sixty', 'instead of 60%'], ['ten percent', '10%'],
+  ['forty-seven percent', '47%'], ['back to ninety', 'back to 90%'], ['nine hundred thousand dollars', '$0.9M'],
+  ['from seventy to ninety percent', 'from 70% to 90%'], ['language model', 'language model'],
   ['ninety-four percent', '94%'], ['eighty-three for', '83% for'], ['all fifteen', 'all 15'], ['nine one one', '911'],
 ]
+const _cn = CAPTION_NUMBERS
 const toCaption = (t) => CAPTION_NUMBERS.reduce((s, [a, b]) => s.split(a).join(b), t)
 
 function splitSentences(text) {
@@ -345,19 +350,20 @@ async function main() {
     s.start = (Date.now() - t0) / 1000
     console.log(`  ${s.id.padEnd(9)} ${s.start.toFixed(1)}s  (${s.dur.toFixed(1)}s narration)`)
     if (s.title) await page.evaluate((t, st) => window.__vx.title(t, st, true), s.title[0], s.title[1])
+    if (s.slide) await page.evaluate((k) => window.__vx.slide(k), s.slide)
     // captions: one sentence at a time, timed by length
     const sentences = splitSentences(s.say).map(toCaption)
     const chars = sentences.reduce((n, l) => n + l.length, 0)
     const captionTimer = (async () => {
       for (const l of sentences) {
-        await page.evaluate((tag, line) => window.__vx.caption(tag, line), s.title ? null : s.tag, l)
+        await page.evaluate((tag, line) => window.__vx.caption(tag, line), s.title || s.slide ? null : s.tag, l)
         await sleep((l.length / chars) * s.dur * 1000)
       }
     })()
     const minTime = sleep(s.dur * 1000 + 700)
     try { await s.run(a) } catch (e) { console.log(`    ! ${s.id}: ${e.message}`) }
     await Promise.all([minTime, captionTimer])
-    if (s.title) { await page.evaluate(() => window.__vx.title('', '', false)); await sleep(500) }
+    if (s.title || s.slide) { await page.evaluate(() => window.__vx.title('', '', false)); await sleep(500) }
     await page.evaluate(() => window.__vx.caption(null, null))
     await sleep(200)
   }

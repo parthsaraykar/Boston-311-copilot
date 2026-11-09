@@ -81,7 +81,7 @@ export default function Risk() {
                 </tbody>
               </table>
             </div>
-            <div className="p-4"><Note>Expected gain weights each neighborhood’s mix of requests by department by that department’s change in on-time rate (optimised vs flat staffing). Parks drops because it was overstaffed in winter.</Note></div>
+            <div className="p-4"><Note>Expected gain weights each neighborhood’s mix of requests by department by that department’s change in on-time rate (optimised vs flat staffing). Transportation gains most because it is the most short-staffed today.</Note></div>
           </>
         )}
       </Card>

@@ -49,14 +49,15 @@ def restaff(staffing: dict, params: dict) -> dict:
 
 # ---------- storm from real data ----------
 
-def find_storms(top_n: int = 3) -> list[dict]:
-    """Winter days whose citywide count (four depts) is far above the 28-day rolling median."""
+def find_storms(top_n: int = 3, months=(12, 1, 2, 3)) -> list[dict]:
+    """Days whose citywide count (four depts) is far above the 28-day rolling median, in the given months
+    (winter = snowstorms; summer = heat waves)."""
     daily = pd.read_parquet(PROCESSED / "daily.parquet")
     daily["day"] = pd.to_datetime(daily["day"])
     total = daily.groupby("day")["requests"].sum().asfreq("D", fill_value=0)
     base = total.rolling(28, center=True, min_periods=7).median()
     ratio = total / base
-    winter = ratio[ratio.index.month.isin([12, 1, 2, 3]) & (ratio.index.year <= 2024)]
+    winter = ratio[ratio.index.month.isin(list(months)) & (ratio.index.year <= 2024)]
     storms, used = [], set()
     for day, rv in winter.sort_values(ascending=False).items():
         if any(abs((day - u).days) < 10 for u in used):
@@ -75,11 +76,15 @@ def find_storms(top_n: int = 3) -> list[dict]:
     return storms
 
 
-def storm_demand(demand: dict, storms: list[dict] | None = None) -> dict:
-    """Inject the worst real storm into January and the second worst into February."""
+HEAT_MONTHS = (6, 7, 8)
+
+
+def storm_demand(demand: dict, storms: list[dict] | None = None, into=(0, 1)) -> dict:
+    """Inject the worst real spike into the first month in `into` and the second worst into the next
+    (snowstorms into January-February by default; heat waves into July-August)."""
     storms = storms or find_storms(2)
     out = copy.deepcopy(demand)
-    for month, storm in zip([0, 1], storms):
+    for month, storm in zip(into, storms):
         for d in out:
             out[d][month] += storm["extra_requests"].get(d, 0.0)
     return out
@@ -92,7 +97,7 @@ def scale_demand(demand: dict, mult: float) -> dict:
 
 
 def scenario(demand_mult: float = 1.0, storm: bool = False, overrides: dict | None = None,
-             target: float | None = None, demand: dict | None = None) -> dict:
+             target: float | None = None, demand: dict | None = None, heatwave: bool = False) -> dict:
     """Locked = keep the saved plan and live with the new world. Replanned = solve again in the new world."""
     params0 = load_params()
     params = with_overrides(params0, overrides)
@@ -102,13 +107,15 @@ def scenario(demand_mult: float = 1.0, storm: bool = False, overrides: dict | No
     D = scale_demand(D, demand_mult)
     if storm:
         D = storm_demand(D)
+    if heatwave:
+        D = storm_demand(D, find_storms(2, HEAT_MONTHS), into=(6, 7))
     locked = simulate(restaff(staffing_of(plan), params), D, params)
     replanned = solve(D, params, target=target)
     if not replanned.get("rows"):  # target infeasible: fall back to the cheapest plan
         replanned = solve(D, params, target=None)
     summarize = lambda p: {"totals": p["totals"], "by_dept": p["by_dept"]}  # noqa: E731
     return {
-        "inputs": {"demand_mult": demand_mult, "storm": storm, "overrides": overrides or {}, "target": target},
+        "inputs": {"demand_mult": demand_mult, "storm": storm, "heatwave": heatwave, "overrides": overrides or {}, "target": target},
         "locked": summarize(locked),
         "replanned": {**summarize(replanned), "crews": replanned["crews"], "seasonal": replanned["seasonal"],
                       "hires": replanned["hires"]},
@@ -245,6 +252,7 @@ def run() -> dict:
     for mult in (0.8, 0.9, 1.1, 1.2):
         cases[f"demand_x{mult}"] = scenario(demand_mult=mult)
     cases["storm"] = scenario(storm=True)
+    cases["heatwave"] = scenario(heatwave=True)
     cases["late_cost_40"] = scenario(overrides={"late_cost": 40})
     cases["severance_50"] = scenario(overrides={"severance_rate": 0.5})
     cases["seasonal_premium_50"] = scenario(overrides={"seasonal_premium": 0.5})
@@ -261,10 +269,17 @@ def run() -> dict:
             - base_plan()["totals"]["demand"] * (1 - base_plan()["totals"]["on_time_rate"]), 0),
         "hiring_ahead_saves": st["cost_of_not_replanning"],
     }
+    hw = cases["heatwave"]
+    heat_summary = {
+        "spikes": find_storms(3, HEAT_MONTHS),
+        "extra_cost_locked": round(hw["locked"]["totals"]["total_cost"] - hw["base"]["totals"]["total_cost"], 2),
+        "on_time_locked": hw["locked"]["totals"]["on_time_rate"],
+        "replanning_saves": hw["cost_of_not_replanning"],
+    }
     mc = monte_carlo()
     robust = robust_plan()
     out = {
-        "cases": cases, "storm": storm_summary, "monte_carlo": mc,
+        "cases": cases, "storm": storm_summary, "heatwave": heat_summary, "monte_carlo": mc,
         "robust": {"crews": robust["plan"]["crews"], "seasonal": robust["plan"]["seasonal"],
                    "totals_on_mean": robust["plan"]["totals"], "monte_carlo": robust["monte_carlo"]},
         "smoothing": smoothing(0.3),
@@ -282,6 +297,7 @@ if __name__ == "__main__":
               f"  replanned ${c['replanned']['totals']['total_cost']:>12,.0f} ({c['replanned']['totals']['on_time_rate']:.1%})")
     print("storms:", [(s["day"], s["ratio"]) for s in out["storm"]["storms"]])
     print("storm:", {k: v for k, v in out["storm"].items() if k != "storms"})
+    print("heat wave:", [(x["day"], x["ratio"]) for x in out["heatwave"]["spikes"]], {k: v for k, v in out["heatwave"].items() if k != "spikes"})
     mc = out["monte_carlo"]
     print(f"monte carlo: all depts hit {mc['target']:.0%} in {mc['years_all_depts_hit_target']}/100 years; "
           f"cost p10/p50/p90 {mc['cost_p10']:,.0f} / {mc['cost_p50']:,.0f} / {mc['cost_p90']:,.0f}; per dept {mc['years_dept_hit_target']}")

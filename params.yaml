@@ -1,36 +1,38 @@
-# Planning inputs. Values marked "brief" come from the challenge brief; "assumed" are our estimates
-# (see report/report.md, Assumptions). starting_crews is calibrated by `python -m optimizer.calibrate`.
-late_cost: 20            # brief: $ per request not closed within its month
-late30_cost: 100         # brief: extra $ per request open 30+ days
-severance_rate: 0.25     # brief: 25% of annual salary when a crew is released (plus 1 month notice)
-seasonal_premium: 0.30   # brief: Parks seasonal crews cost 30% more
-training_months: 1       # brief: hired crews are paid but not productive for 1 month
-default_on_time_target: 0.85   # assumed: the city's target; the brief leaves it open
+# Planning inputs. All values come from the IE 5374 topic brief ("use them as stated"), except
+# default_on_time_target, which the brief leaves to us. A crew works 21 days a month.
+late_cost: 20            # brief: $ per overdue request
+late30_cost: 100         # brief: extra $ per request open 30+ days past target
+severance_rate: 0.25     # brief: releasing a crew costs 25% of its annual cost (plus 1 month notice)
+seasonal_premium: 0.30   # brief: Parks seasonal crews cost 1.3x the monthly cost
+seasonal_months: [4, 5, 6, 7, 8, 9, 10]   # brief: Parks seasonal crews April-October only
+training_months: 1       # brief: new crews need 1 month of hiring and training
+default_on_time_target: 0.85   # our choice; the brief leaves the target open
+starting_crews_fixed: true     # brief gives January 2025 crews, so no calibration
 
 departments:
   Public Works:
-    crew_cost: 130000            # brief
-    requests_per_crew_month: 250 # assumed: mostly quick jobs (code enforcement, pickups, cleaning)
+    crew_cost: 130000             # brief
+    requests_per_crew_month: 252  # brief: 12 requests/day x 21 days
     seasonal_allowed: false
   Transportation:
-    crew_cost: 130000            # assumed same as Public Works
-    requests_per_crew_month: 300 # assumed: parking enforcement dominates and is fast
+    crew_cost: 110000             # brief
+    requests_per_crew_month: 315  # brief: 15 requests/day x 21 days
     seasonal_allowed: false
   Parks:
-    crew_cost: 130000            # assumed same as Public Works
-    requests_per_crew_month: 60  # assumed: tree work is slow
+    crew_cost: 120000             # brief
+    requests_per_crew_month: 126  # brief: 6 requests/day x 21 days
     seasonal_allowed: true
   Inspectional Services:
-    crew_cost: 130000            # assumed same as Public Works
-    requests_per_crew_month: 70  # assumed: inspections take a site visit and paperwork
+    crew_cost: 140000             # brief
+    requests_per_crew_month: 84   # brief: 4 requests/day x 21 days
     seasonal_allowed: false
 
-# calibrated so that flat staffing on 2024 demand reproduces the real 2024 on-time rate
+# brief: crews in January 2025
 starting_crews:
-  Public Works: 53
-  Transportation: 20
-  Parks: 38
-  Inspectional Services: 20
+  Public Works: 50
+  Transportation: 18
+  Parks: 10
+  Inspectional Services: 16
 
 llm:
   host: http://localhost:11434

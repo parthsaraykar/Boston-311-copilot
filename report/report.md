@@ -1,5 +1,8 @@
 # Boston 311 Copilot: report
 
+_IE 5374 Applied Generative AI · Module 7 Hackathon · Team 4 (Parth Sanjay Saraykar, Rutuja Kalidasrao Jadhav, Samruddhi Bansod)._
+_**AI-generated:** this report was drafted by an AI coding assistant (Claude Code) from the project's own outputs, under the team's direction; see README, "How we used AI"._
+
 ## 1. Problem
 
 Boston 311 takes about 840 requests a day. Two things go wrong, and both cost money:
@@ -50,106 +53,117 @@ replaying 2025, it flags Public Works year-to-date demand 16% under forecast and
 An integer program over 4 departments × 12 months (PuLP + CBC, ~1 s).
 
 - **Decisions:** active crews `x`, hires `h` (paid while training, productive after 1 month), releases `r` (leave
-  next month, 25% severance), Parks seasonals `s` (1.3× cost, immediate).
-- **Flows:** served `q ≤ k·(x+s)`; backlog `B_t = B_{t-1} + D_t − q_t`; `L30_t ≥ B_{t-1} − q_t` (old work served
-  first; anything older than a month counts as 30+ days late).
-- **Objective:** crew cost (incl. trainees) + severance + seasonal premium + $20 × backlog + $100 × L30.
-- **Target:** on-time share `Σ(D−B)/ΣD ≥ τ` **in each department** (τ = 85% by default). Without it, the cheapest
-  plan lets Inspectional Services fall to 58% and Parks to 67% to save $164k.
-- **Shadow prices:** re-solve with integers relaxed and read each capacity constraint's dual × `k`. The result is
-  the late cost saved by one more crew that month.
+  next month, 25% of annual cost), Parks seasonals `s` (1.3× monthly cost, no training, no release cost,
+  **April–October only**).
+- **Flows:** served `q ≤ k·(x+s)`; backlog `B_t = B_{t-1} + D_t − q_t`, starting at zero as the brief allows;
+  `L30_t ≥ B_{t-1} − q_t` (old work is served first, and anything left over a month counts as 30+ days late).
+- **Objective:** crew cost (including trainees) + severance + seasonal cost + $20 × backlog + $100 × L30.
+- **Target:** on-time share `Σ(D−B)/ΣD ≥ τ` **in each department**, with τ = 85% (our choice; the brief leaves it
+  open). Without it, the cheapest plan lets Inspectional Services fall to 58% and Parks to 73% to save $71k.
+- **Shadow prices:** re-solve with integers relaxed and read each capacity constraint's dual × `k`. That's the
+  late cost one more crew would save in that month.
 
-**Inputs (params.yaml).** Crew cost is $130k for every department; the brief gives Public Works only, so the other
-three are assumed. Requests per crew per month are assumed: Public Works 250, Transportation 300, Parks 60,
-Inspectional Services 70. **Starting crews are calibrated**: the smallest flat crew count whose simulated 2024
-on-time rate reaches the real 2024 rate. That gives Public Works 53, Transportation 20, Parks 38 and Inspectional
-Services 20.
+**Inputs: the brief's, as stated.**
 
-**Results (2025 forecast demand).**
+| | Capacity | k = per crew-month | Annual cost | Crews, Jan 2025 |
+|---|---|---|---|---|
+| Public Works | 12 per day | 252 | $130,000 | 50 |
+| Transportation | 15 per day | 315 | $110,000 | 18 |
+| Parks | 6 per day | 126 | $120,000 | 10 |
+| Inspectional Services | 4 per day | 84 | $140,000 | 16 |
+
+**Results (2025 forecast demand):**
 
 | Plan | Cost | On time | Transportation | Parks | ISD | PW |
 |---|---|---|---|---|---|---|
-| Flat (today's crews) | $19.46M | 75.2% | 38.0% | 94.7% | 84.7% | 91.6% |
-| Level (avg demand ÷ k) | $17.85M | 81.0% | 87.7% | 38.2% | 84.7% | 82.1% |
-| **Optimised (τ = 85%)** | **$17.34M** | **92.5%** | 97.2% | 85.8% | 85.1% | 91.6% |
+| Flat (January crews all year) | $18.87M | 59.7% | 29.8% | 30.6% | 74.9% | 77.5% |
+| Level (average demand ÷ k) | $14.47M | 82.5% | 89.8% | 37.0% | 74.9% | 84.9% |
+| **Optimised (τ = 85%)** | **$13.57M** | **91.5%** | 97.8% | 86.7% | 85.9% | 89.4% |
 
-- **Saving: $2.13M vs flat, $0.51M vs level.**
-- What it does: Transportation hires 3 crews in February and 1 in March (20 → 24); Parks releases 15 permanent
-  crews after January and covers May–August with 11 / 20 / 16 / 4 seasonal crews; Public Works holds at 53.
-- **Trade-off to state plainly:** Parks drops from 94.7% to 85.8% on time. It was over-staffed for winter, and the
-  plan spends that money on Transportation.
-- **Cost vs on-time frontier:** flat at $17.17M up to a 55% target; $17.34M at 85%; $17.58M at 95%.
-- **Shadow prices:** one more Parks crew in May–August saves about $14.1k a month in late costs, against
-  $10.8k for a crew-month. One more Inspectional Services crew in June saves $21.7k.
+- **Saving: $5.30M vs flat, $0.90M vs level.** Flat staffing is expensive because the backlog snowballs: work
+  left over keeps costing $20 a month, and $100 once it's 30+ days old.
+- **What the plan does (month-by-month table in notebook §3):**
+  - Transportation hires 1 crew in January, 3 in February and 1 in March (18 → 23). It's the most short-staffed
+    department.
+  - Parks keeps its 10 permanent crews and adds seasonal crews in April, May, June, July and August (1, 6, 10,
+    9, 5), with no training and no release cost.
+  - Public Works hires 1 in March and 1 in April (50 → 52).
+  - Inspectional Services hires 1 in June (16 → 17).
+  - Nobody is released: with 25% severance, carrying a crew through a slow month is cheaper than releasing it.
+- **Cost vs on-time frontier:** $13.50M up to a 55% target, $13.57M at 85%, $13.74M at 95%.
+- **Shadow prices:**
+  - One more Parks crew in April–August would save about $13.0k a month in late costs, against $10.0k for a
+    crew-month.
+  - One more Public Works crew in July would save $25.2k.
+  - One more Inspectional Services crew in June would save $23.3k.
 
-**Does "closed within the month = on time" fit history?** Only partly. We ran today's crews flat through 2023–24
-actual demand and compared the model's monthly on-time rate with the real one. For Transportation the correlation
-is 0.70. For the other three it is negative, with a mean absolute error of 11–26 points: their real on-time rate
-barely moves between busy and quiet months, which suggests staff absorb peaks (overtime, re-prioritising) in ways
-the model doesn't. So the model is a **conservative proxy** for SLA on-time, not a replica of it.
+**Does "closed within the month = on time" fit history?** Only partly. We ran January crews flat through
+2023–24 actual demand and compared the model's monthly on-time rate with the real one. Transportation correlates
+at 0.75. The other departments don't: their real on-time rate barely moves between busy and quiet months, which
+suggests staff absorb peaks in ways the model doesn't capture. Also, many Parks requests have 365-day SLA targets.
+So the model is a **conservative proxy** for SLA on-time, not a replica of it.
 
 ## 5. Sensitivity and scenarios
 
 We keep two questions apart. **Locked:** keep the saved plan and live with a new world. **Re-planned:** what we'd
 pick if we knew.
 
-| Case | Keep plan | Re-plan |
-|---|---|---|
-| Demand −20% | $16.94M · 99.9% | $14.90M · 91.5% |
-| Demand +10% | $19.86M · 55.4% | $18.74M · 90.9% |
-| Demand +20% | $30.77M · 30.0% | $20.37M · 89.4% |
-| Snowstorm (real data) | $17.68M · 86.4% | $17.59M · 90.5% |
-| Crew output −10% | $20.20M · 51.0% | $18.85M · 89.9% |
-| Training 2 months | $17.49M · 89.7% | $17.39M · 92.5% |
-| Late cost $40 | $17.74M · 92.5% | $17.70M · 93.6% |
-| Severance 50% | $17.86M · 92.5% | $17.72M · 92.5% |
+| Case | Keep plan | Re-plan | Re-planning saves |
+|---|---|---|---|
+| Demand −20% | $13.11M · 100% | $11.51M · 92.2% | $1.61M |
+| Demand −10% | $13.20M · 98.2% | $12.51M · 91.1% | $0.70M |
+| Demand +10% | $17.39M · 47.1% | $14.89M · 90.3% | $2.50M |
+| **Demand +20%** | **$29.35M · 25.0%** | $16.34M · 89.1% | **$13.01M** |
+| Snowstorm (real data, Jan–Feb) | $14.43M · 75.9% | $13.97M · 90.1% | $0.46M |
+| Heat wave (real data, Jul–Aug) | $14.00M · 83.8% | $13.94M · 89.6% | $0.05M |
+| Crew output −10% | $17.83M · 43.4% | $14.98M · 89.1% | $2.85M |
+| Training 2 months | $13.82M · 86.8% | $13.65M · 91.4% | $0.17M |
+| Late cost $40 | $14.02M · 91.5% | $13.90M · 94.6% | $0.12M |
 
-- **The plan is fragile to under-forecasting.** A 10% demand miss costs $1.1M more than re-planning would. This is
-  the strongest argument for the Monitor agent.
-- **Storm from real data:** the worst winter days in 2022–24 were 2022-01-31 (3.1× normal), 2024-12-23 and
-  2023-12-18. Injecting the extra requests from those storms into January–February adds 17,050 late requests and
-  $341k if we don't adjust. Re-planning ahead recovers $92k.
-- **Tornado (re-planned cost change):** crew cost ±10% moves cost ±$1.7M; crew output −10% / +10% moves it
-  +$1.5M / −$1.1M; demand ±10% −$1.2M / +$1.4M; severance −$0.33M / +$0.38M; late cost −$0.28M / +$0.36M;
-  seasonal premium ±$0.1M; training time under $0.1M. The 30+ day cost never binds.
-- **100 simulated years** (bootstrapped forecast errors with a shared year-level shock, plan locked): cost p10 /
-  p50 / p90 = $17.17M / $17.42M / $18.32M. **All four departments hit 85% in only 5 of 100 years** (Transportation
-  89, Public Works 76, Parks 48, Inspectional Services 21). The plan sits right at the target for Inspectional
-  Services and Parks, so any miss tips them under.
-- **Robust plan** (one plan optimised over 20 sampled years): every department at target in 16 of 100 years, median
-  cost $17.50M (+$75k). That's better but still tight. A city wanting 85% with high confidence should plan to
-  about 90%.
-- **Employee work smoothing:** moving 30% of employee-logged work out of above-average months into quieter months
-  saves **$408k a year** and cuts the Parks peak from 43 to 38 crews.
+- **Under-forecasting is the dangerous direction.** At +20% the backlog snowballs and a locked plan costs more
+  than double. Over-forecasting just means idle crews.
+- **Storms and heat waves come from real data.** We found the days in 2022–24 with the highest citywide counts
+  against a 28-day rolling median, and added each spike's extra requests per department to the 2025 demand.
+  - Snowstorms: 2022-01-31 (3.1× a normal day), 2024-12-23 and 2023-12-18, added to Jan–Feb. If the plan doesn't
+    change, that's 43,162 more late requests and $0.86M.
+  - Heat waves: 2022-08-31 (1.8×), 2023-08-31 and 2022-08-03, added to Jul–Aug. If the plan doesn't change,
+    that's $0.43M.
+- **Tornado (change in re-planned cost):** crew cost ±10% moves it ±$1.3M; crew output −10% / +10%, +$1.4M /
+  −$0.9M; demand ±10%, −$1.1M / +$1.3M; late cost $10 / $40, −$0.26M / +$0.34M. Training time, the seasonal
+  premium and severance each move it by under $0.1M.
+- **100 simulated years** (bootstrapped forecast errors with a shared year-level shock, plan locked):
+  - Cost p10 / p50 / p90: $13.35M / $13.65M / $14.89M.
+  - All four departments hit 85% in only 6 of 100 years: Transportation 89, Public Works 68, Parks 53, Inspectional
+    Services 24. The plan sits right at the target for Inspectional Services and Parks.
+- **Robust plan** (one plan optimised over 20 sampled years): all four at target in 9 of 100 years, at a median cost
+  of $13.64M. Planning to about 90% gives real headroom.
+- **Employee-logged work:** 42% of requests are logged by city employees, and that work can be scheduled. Moving
+  30% of it out of above-average months saves **$281k a year** and trims the Parks peak from 20 crews to 18.
 
 ## 5b. Proof on real data: the 2025 replay
 
 What if Boston had run this in 2025? We replay the **real 2025 demand** month by month and score four strategies
-on it. The plan starts from the January forecast (trained on 2022–24). In the monitored strategy, the shipped
-Monitor rule runs at the end of each month: when a department's demand leaves the forecast band, or year to date
-is more than 8% off, it re-plans the remaining months. Past months stay fixed, and hires still need a month of
-training.
+on it. The plan starts from the January forecast (trained on 2022–24). With the monitor, the shipped Monitor rule
+runs at the end of each month: when a department's demand leaves the forecast band, or is more than 8% off year to
+date, it re-plans the remaining months. Past months stay fixed, and hires still need a month of training.
 
 | Strategy, real 2025 demand | Cost | On time | Depts ≥ 85% | Worst dept |
 |---|---|---|---|---|
-| Today's crews all year | $18.39M | 78.5% | 2/4 | Transportation 45.0% |
-| Optimised plan, never changed | $17.12M | 96.1% | 3/4 | Inspectional Services 70.6% |
-| **Optimised plan + monitor** | **$17.86M** | **89.5%** | 3/4 | Parks 84.6% |
-| Perfect hindsight (lower bound) | $16.03M | 89.8% | 4/4 | Inspectional Services 85.5% |
+| January crews all year | $15.11M | 70.2% | 1/4 | Transportation 32.8% |
+| Optimised plan, never changed | $13.30M | 96.1% | 3/4 | Inspectional Services 71.4% |
+| **Optimised plan + monitor** | **$14.19M** | **89.8%** | **4/4** | Public Works 85.5% |
+| Perfect hindsight (lower bound) | $12.61M | 90.5% | 4/4 | Inspectional Services 85.3% |
 
-- **Against today's crews,** the monitored plan saves **$0.53M** and lifts on-time from 78.5% to 89.5%.
-  Transportation goes from 45% to 98%, and every department ends within half a point of target.
-- **The plan that never changes is cheaper, for the wrong reason.** Demand fell well under forecast (Public Works
-  −16%, Parks −26%), so it was overstaffed in those two departments. It still left Inspectional Services at 71%,
-  where July demand came in above the band.
-- **The monitor's weakness is churn.** It re-planned in all 11 months, and severance reached $1.82M. Public Works
-  swung from 53 to 38 to 54 crews as the month-to-month correction moved. The $1.82M gap to perfect hindsight is
+- **The monitored plan is the only real strategy that keeps every department at target.** It costs $0.92M less
+  than January crews and lifts on-time from 70% to 90%.
+- **The plan that never changes is cheaper, but it fails a department.** 2025 demand fell well under forecast for
+  Public Works (−16%) and Parks (−26%), so that plan was overstaffed there, and it still left Inspectional
+  Services at 71%.
+- **The monitor's cost is churn:** 11 re-plans and $1.06M of severance. The $1.58M gap to perfect hindsight is
   the value of a better forecast.
-- **Rule variants, for transparency.** We also ran YTD-only, persistent-drift, target-margin and HR-capacity caps
-  on both a 2024 replay and 2025. The 2024 replay uses a forecast trained through 2023 and crews calibrated on 2023.
-  A 2024-only selection would pick the 10% change cap; in 2025 that is $1.1M cheaper but lets Parks and
-  Inspectional Services fall to 71–72%. We report the rule as shipped, fixed before the replay was built, rather
-  than tuning it on the year we report.
+- **Rule variants, for transparency.** YTD-only, persistent-drift, target-margin and HR-capacity-cap variants were
+  run on a 2024 replay (forecast trained through 2023) and on 2025. The 2024 selection picks the shipped rule.
+  Every variant that's cheaper in 2025 lets a department fall to 61–75%.
 
 ## 6. Intake assistant
 
@@ -229,7 +243,7 @@ and shown in the UI.
 - **Planner:** `get_plan`, `get_forecast`, `explain_month`, `run_scenario`, `compare_baselines`, `solve_plan`, and
   a hand-off to the stress-test agent. It says "I don't have that" when no tool answers the question.
 - **Stress-test:** a greedy search over demand (+10 / +20%), storm, crew output (−10%) and training (2 months). It
-  finds the brute-force grid's worst case (all four at once: $54.4M, 12% on time; re-planning saves $29.5M) in 13
+  finds the brute-force grid's worst case (all four at once: $54.5M, 11% on time; re-planning saves $33.5M) in 13
   of 24 probes.
 - **Monitor:** live demand (2025 replayed to a chosen month, plus requests filed in the app) against the band;
   drafts a re-plan for the rest of the year. **No agent can commit a plan**: only `POST /plan/approve/{id}`, from
@@ -253,8 +267,8 @@ and offers the LLM as a toggle; the trace shows which mode ran.
 
 ## 9. Limits
 
-- Crew output, three of the four crew costs and the 85% target are assumptions (`params.yaml`). Starting crews are
-  calibrated, not observed.
+- Crew capacity, costs and January crews are planning assumptions given by the brief. The 85% target and the
+  $20 / $100 overdue costs drive the trade-off; the tornado shows how much they matter.
 - The on-time rule is a coarse proxy for SLA compliance (Section 4).
 - 2025 level shifts (Parks −26%, Public Works −16%) make the 2025 forecast weak for those two departments.
 - The test set has a single author. A second labeller should review a sample.

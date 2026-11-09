@@ -20,3 +20,5 @@ mcp
 reportlab
 pytest
 faster-whisper==1.2.1
+matplotlib<3.10
+jupyter

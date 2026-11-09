@@ -88,7 +88,8 @@ def _inputs(year: int):
         # the 2024 forecast from the backtest (trained on data through 2023), and crews calibrated on 2023
         bt = json.loads((CONTRACTS / "forecast.json").read_text())["backtests"]
         F = {d: list(np.maximum(bt[d]["series_2024"]["pred"], 0)) for d in depts}
-        params = {**params, "starting_crews": calibrate(params, year=2023)}
+        if not params.get("starting_crews_fixed"):
+            params = {**params, "starting_crews": calibrate(params, year=2023)}
         plan = None
     else:
         raise ValueError(year)
