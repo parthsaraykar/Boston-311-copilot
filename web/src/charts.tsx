@@ -12,7 +12,7 @@ function TT({ active, payload, label, fmt = num, title }: any) {
   return (
     <div className="tt">
       <div className="font-semibold mb-1">{title ? title(label) : label}</div>
-      {payload.filter((p: any) => p.value != null && p.name !== 'band').map((p: any) => (
+      {payload.filter((p: any) => p.value != null && !Array.isArray(p.value) && p.name !== 'band').map((p: any) => (
         <div key={p.dataKey} className="flex items-center gap-2">
           <span aria-hidden style={{ width: 10, height: 3, background: p.color || p.stroke, display: 'inline-block' }} />
           <span className="text-2">{p.name}</span><span className="ml-auto font-semibold pl-3">{fmt(p.value)}</span>

@@ -7,9 +7,9 @@
 
 ## Demo video (3 min)
 
-[![Watch the Boston 311 Copilot demo](media/demo-thumbnail.png)](media/boston-311-copilot-demo.mp4)
+<a href="media/boston-311-copilot-demo.mp4"><img src="media/demo-preview.gif" alt="Boston 311 Copilot demo preview: routing a request, the crew plan, agents approving a re-plan, the 2025 replay" width="100%"></a>
 
-▶ **[Watch the demo](media/boston-311-copilot-demo.mp4)** (2:55, 1080p). It covers resident intake in any language
+▶ **[Watch the full demo with narration](media/boston-311-copilot-demo.mp4)** (2:55, 1080p). The animation above is a silent 30-second preview. It covers resident intake in any language
 and by voice, the 911 safety gate, the 2025 crew plan, "Ask the plan", the agents, the 2025 replay on real data,
 City pulse and the evaluation. The video is recorded straight from the running app with `make video`.
 
