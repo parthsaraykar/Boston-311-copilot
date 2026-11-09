@@ -1,0 +1,108 @@
+{
+ "text_scrubbed": "big hole near the Jackson Sq T stop, almost blew a tire",
+ "privacy_removed": [],
+ "language": "en",
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "mode": "retrieval",
+ "status": "routed",
+ "question": null,
+ "category_id": "C07",
+ "type": "Request for Pothole Repair",
+ "type_name": "Pothole",
+ "department": "Public Works",
+ "dept_code": "PWDx",
+ "queue": "PWDx_District 02: Jamaica Plain",
+ "queue_share": 0.523,
+ "confidence": 0.994,
+ "reason": "Closest match to 'Pothole' (similarity 0.68).",
+ "urgency": "normal",
+ "location_text": "Jackson Sq T stop",
+ "location": {
+  "lat": 42.3230691,
+  "lon": -71.0998087,
+  "display": "Jackson Square, 245, Centre Street, Jamaica Plain, Boston, Suffolk County, Massachusetts, 02120, United States",
+  "neighborhood": "Jamaica Plain",
+  "pwd_district": "10A",
+  "nearest_m": 11
+ },
+ "similar_open": [],
+ "expected_fix_days": 2.0416666666666665,
+ "on_time_rate": 0.40875370919881304,
+ "photo_description": null,
+ "candidates": [
+  {
+   "id": "C07",
+   "name": "Pothole",
+   "type": "Request for Pothole Repair",
+   "score": 0.678
+  },
+  {
+   "id": "C19",
+   "name": "Broken sidewalk",
+   "type": "Sidewalk Repair (Make Safe)",
+   "score": 0.525
+  },
+  {
+   "id": "C60",
+   "name": "Manhole or utility cover",
+   "type": "Sidewalk Cover / Manhole",
+   "score": 0.426
+  },
+  {
+   "id": "C13",
+   "name": "Damaged street sign",
+   "type": "Sign Repair",
+   "score": 0.389
+  },
+  {
+   "id": "C41",
+   "name": "Fallen tree or branch",
+   "type": "Tree Emergencies",
+   "score": 0.36
+  },
+  {
+   "id": "C16",
+   "name": "Abandoned vehicle",
+   "type": "Abandoned Vehicles",
+   "score": 0.358
+  },
+  {
+   "id": "C24",
+   "name": "Illegal dumping",
+   "type": "Illegal Dumping",
+   "score": 0.348
+  },
+  {
+   "id": "C29",
+   "name": "Park equipment repair",
+   "type": "Equipment Repair",
+   "score": 0.345
+  },
+  {
+   "id": "C63",
+   "name": "Neighbor construction affecting my property",
+   "type": "Protection of Adjoining Property",
+   "score": 0.344
+  },
+  {
+   "id": "C72",
+   "name": "Street work noise",
+   "type": "Work Hours-Loud Noise Complaints",
+   "score": 0.342
+  }
+ ],
+ "top10_ids": [
+  "C07",
+  "C19",
+  "C60",
+  "C13",
+  "C41",
+  "C16",
+  "C24",
+  "C29",
+  "C63",
+  "C72"
+ ],
+ "latency_ms": 13185
+}

@@ -1,0 +1,133 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "plan_year": {
+   "type": "integer"
+  },
+  "on_time_target": {
+   "type": "number"
+  },
+  "status": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+     "dept": {
+      "type": "string"
+     },
+     "month": {
+      "type": "integer"
+     },
+     "demand": {
+      "type": "number"
+     },
+     "crews": {
+      "type": "number"
+     },
+     "hires": {
+      "type": "number"
+     },
+     "releases": {
+      "type": "number"
+     },
+     "seasonal": {
+      "type": "number"
+     },
+     "served": {
+      "type": "number"
+     },
+     "backlog": {
+      "type": "number"
+     },
+     "late": {
+      "type": "number"
+     },
+     "late30": {
+      "type": "number"
+     },
+     "on_time_rate": {
+      "type": "number"
+     },
+     "cost_crew": {
+      "type": "number"
+     },
+     "cost_severance": {
+      "type": "number"
+     },
+     "cost_seasonal": {
+      "type": "number"
+     },
+     "cost_late": {
+      "type": "number"
+     },
+     "cost_late30": {
+      "type": "number"
+     },
+     "shadow_value": {
+      "type": [
+       "number",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "dept",
+     "month",
+     "demand",
+     "crews",
+     "hires",
+     "releases",
+     "seasonal",
+     "served",
+     "backlog",
+     "cost_crew",
+     "cost_late",
+     "shadow_value"
+    ]
+   }
+  },
+  "totals": {
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "type": "object",
+   "properties": {
+    "total_cost": {
+     "type": "number"
+    },
+    "on_time_rate": {
+     "type": "number"
+    }
+   },
+   "required": [
+    "total_cost",
+    "on_time_rate"
+   ]
+  },
+  "by_dept": {
+   "type": "object"
+  },
+  "crews": {
+   "type": "object"
+  },
+  "hires": {
+   "type": "object"
+  },
+  "releases": {
+   "type": "object"
+  },
+  "seasonal": {
+   "type": "object"
+  }
+ },
+ "required": [
+  "plan_year",
+  "rows",
+  "totals",
+  "crews",
+  "seasonal"
+ ]
+}

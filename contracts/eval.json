@@ -1,0 +1,1021 @@
+{
+ "retrieval": {
+  "n_messages": 201,
+  "overall": {
+   "n": 171,
+   "type_accuracy": 0.9415,
+   "dept_accuracy": 0.9708,
+   "type_strict": 0.9006,
+   "top10_hit_rate": 0.9883,
+   "baseline_tfidf_type_accuracy": 0.8304
+  },
+  "by_slice": {
+   "ambiguous": {
+    "n": 30,
+    "type_accuracy": 0.9333,
+    "dept_accuracy": 0.9667,
+    "type_strict": 0.7333,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.8667
+   },
+   "common": {
+    "n": 101,
+    "type_accuracy": 0.9703,
+    "dept_accuracy": 0.9901,
+    "type_strict": 0.9604,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.9109
+   },
+   "long_tail": {
+    "n": 20,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "multilingual": {
+    "n": 20,
+    "type_accuracy": 0.75,
+    "dept_accuracy": 0.85,
+    "type_strict": 0.75,
+    "top10_hit_rate": 0.9,
+    "baseline_tfidf_type_accuracy": 0.2
+   }
+  },
+  "by_language": {
+   "en": {
+    "n": 151,
+    "type_accuracy": 0.9669,
+    "dept_accuracy": 0.9868,
+    "type_strict": 0.9205,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.9139
+   },
+   "es": {
+    "n": 4,
+    "type_accuracy": 0.75,
+    "dept_accuracy": 1.0,
+    "type_strict": 0.75,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.5
+   },
+   "ht": {
+    "n": 4,
+    "type_accuracy": 0.25,
+    "dept_accuracy": 0.25,
+    "type_strict": 0.25,
+    "top10_hit_rate": 0.5,
+    "baseline_tfidf_type_accuracy": 0.25
+   },
+   "pt": {
+    "n": 4,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.0
+   },
+   "vi": {
+    "n": 4,
+    "type_accuracy": 0.75,
+    "dept_accuracy": 1.0,
+    "type_strict": 0.75,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.0
+   },
+   "zh": {
+    "n": 4,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.25
+   }
+  },
+  "by_department": {
+   "BTDT": {
+    "n": 36,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 0.9444,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.8889
+   },
+   "BWSC": {
+    "n": 5,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "GEN": {
+    "n": 5,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "INFO": {
+    "n": 5,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "ISD": {
+    "n": 28,
+    "type_accuracy": 0.9286,
+    "dept_accuracy": 0.9286,
+    "type_strict": 0.8929,
+    "top10_hit_rate": 0.9643,
+    "baseline_tfidf_type_accuracy": 0.8571
+   },
+   "PARK": {
+    "n": 13,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 0.9231,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.9231
+   },
+   "PROP": {
+    "n": 3,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "PWDx": {
+    "n": 76,
+    "type_accuracy": 0.8947,
+    "dept_accuracy": 0.9605,
+    "type_strict": 0.8553,
+    "top10_hit_rate": 0.9868,
+    "baseline_tfidf_type_accuracy": 0.7368
+   }
+  },
+  "emergency_recall": 1.0,
+  "emergency_n": 15,
+  "false_emergency_rate": 0.0,
+  "guardrail_refusal_rate": 1.0,
+  "guardrail_n": 15,
+  "wrongly_refused_rate": 0.0117,
+  "clarify_share": 0.1144,
+  "ambiguous_first_pass_accuracy": 0.9,
+  "ambiguous_after_followup_accuracy": 0.9333,
+  "located_share": 0.2281,
+  "latency_ms_p50": 60.0,
+  "latency_ms_p95": 1228.0,
+  "tokens_per_request": 0.0,
+  "cost_per_request_usd": 0.0,
+  "cost_note": "Runs on a local Ollama model, so there is no per-request API cost; the cost is the laptop/server CPU time shown as latency.",
+  "leakage_check": {
+   "threshold": 0.85,
+   "n_near_copies": 68,
+   "type_accuracy_excluding_near_copies": 0.9029,
+   "n_clean": 103,
+   "note": "Cards and test set were written by the same person; messages within 0.85 cosine of a card example are excluded here."
+  },
+  "confusion_by_department": {
+   "BTDT": {
+    "BTDT": 36
+   },
+   "PWDx": {
+    "PWDx": 73,
+    "PARK": 1,
+    "BTDT": 2
+   },
+   "GEN": {
+    "GEN": 5
+   },
+   "PARK": {
+    "PARK": 13
+   },
+   "ISD": {
+    "ISD": 26,
+    "none": 2
+   },
+   "PROP": {
+    "PROP": 3
+   },
+   "INFO": {
+    "INFO": 5
+   },
+   "BWSC": {
+    "BWSC": 5
+   }
+  },
+  "review_queue_curve": [
+   {
+    "cutoff": 0.0,
+    "share_auto": 1.0,
+    "accuracy_auto": 0.9357
+   },
+   {
+    "cutoff": 0.05,
+    "share_auto": 0.9883,
+    "accuracy_auto": 0.9467
+   },
+   {
+    "cutoff": 0.1,
+    "share_auto": 0.9825,
+    "accuracy_auto": 0.9524
+   },
+   {
+    "cutoff": 0.15,
+    "share_auto": 0.9766,
+    "accuracy_auto": 0.9581
+   },
+   {
+    "cutoff": 0.2,
+    "share_auto": 0.9708,
+    "accuracy_auto": 0.9578
+   },
+   {
+    "cutoff": 0.25,
+    "share_auto": 0.9649,
+    "accuracy_auto": 0.9576
+   },
+   {
+    "cutoff": 0.3,
+    "share_auto": 0.9649,
+    "accuracy_auto": 0.9576
+   },
+   {
+    "cutoff": 0.35,
+    "share_auto": 0.9649,
+    "accuracy_auto": 0.9576
+   },
+   {
+    "cutoff": 0.4,
+    "share_auto": 0.9532,
+    "accuracy_auto": 0.9632
+   },
+   {
+    "cutoff": 0.45,
+    "share_auto": 0.9415,
+    "accuracy_auto": 0.9627
+   },
+   {
+    "cutoff": 0.5,
+    "share_auto": 0.924,
+    "accuracy_auto": 0.9747
+   },
+   {
+    "cutoff": 0.55,
+    "share_auto": 0.9123,
+    "accuracy_auto": 0.9744
+   },
+   {
+    "cutoff": 0.6,
+    "share_auto": 0.8538,
+    "accuracy_auto": 0.9726
+   },
+   {
+    "cutoff": 0.65,
+    "share_auto": 0.8363,
+    "accuracy_auto": 0.972
+   },
+   {
+    "cutoff": 0.7,
+    "share_auto": 0.807,
+    "accuracy_auto": 0.9855
+   },
+   {
+    "cutoff": 0.75,
+    "share_auto": 0.8012,
+    "accuracy_auto": 0.9854
+   },
+   {
+    "cutoff": 0.8,
+    "share_auto": 0.7895,
+    "accuracy_auto": 0.9852
+   },
+   {
+    "cutoff": 0.85,
+    "share_auto": 0.7661,
+    "accuracy_auto": 0.9847
+   },
+   {
+    "cutoff": 0.9,
+    "share_auto": 0.7251,
+    "accuracy_auto": 0.9919
+   },
+   {
+    "cutoff": 0.95,
+    "share_auto": 0.6316,
+    "accuracy_auto": 1.0
+   }
+  ],
+  "failures": [
+   {
+    "id": "T033",
+    "slice": "common",
+    "language": "en",
+    "label": "Schedule a Bulk Item Pickup",
+    "pred": "Mattress_Pickup",
+    "status": "routed",
+    "confidence": 0.693
+   },
+   {
+    "id": "T043",
+    "slice": "common",
+    "language": "en",
+    "label": "Illegal Dumping",
+    "pred": "Improper Storage of Trash (Barrels)",
+    "status": "routed",
+    "confidence": 0.697
+   },
+   {
+    "id": "T074",
+    "slice": "common",
+    "language": "en",
+    "label": "Requests for Street Cleaning",
+    "pred": "Unshoveled Sidewalk",
+    "status": "routed",
+    "confidence": 0.949
+   },
+   {
+    "id": "T140",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Missed Trash/Recycling/Yard Waste/Bulk Item",
+    "pred": "Illegal Dumping",
+    "status": "routed",
+    "confidence": 0.896
+   },
+   {
+    "id": "T147",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Rodent Activity",
+    "pred": null,
+    "status": "refused",
+    "confidence": NaN
+   },
+   {
+    "id": "T152",
+    "slice": "multilingual",
+    "language": "es",
+    "label": "Request for Pothole Repair",
+    "pred": "Sidewalk Repair (Make Safe)",
+    "status": "clarify",
+    "confidence": 0.462
+   },
+   {
+    "id": "T156",
+    "slice": "multilingual",
+    "language": "ht",
+    "label": "Request for Pothole Repair",
+    "pred": "Missing Sign",
+    "status": "clarify",
+    "confidence": 0.121
+   },
+   {
+    "id": "T157",
+    "slice": "multilingual",
+    "language": "ht",
+    "label": "Missed Trash/Recycling/Yard Waste/Bulk Item",
+    "pred": "Missing Sign",
+    "status": "clarify",
+    "confidence": 0.095
+   },
+   {
+    "id": "T159",
+    "slice": "multilingual",
+    "language": "ht",
+    "label": "Heat - Excessive  Insufficient",
+    "pred": null,
+    "status": "refused",
+    "confidence": NaN
+   },
+   {
+    "id": "T164",
+    "slice": "multilingual",
+    "language": "vi",
+    "label": "Request for Pothole Repair",
+    "pred": "Pick up Dead Animal",
+    "status": "clarify",
+    "confidence": 0.389
+   }
+  ],
+  "mode": "retrieval"
+ },
+ "queue_from_location": {
+  "cases": 286,
+  "queue_accuracy": 0.8322,
+  "dept_accuracy": 0.958,
+  "multi_queue_types_cases": 123,
+  "multi_queue_accuracy": 0.6504,
+  "note": "Real 2025 cases (some queues are outside the 170 catalog combos, which caps this score)."
+ },
+ "primary": "retrieval",
+ "llm": {
+  "n_messages": 201,
+  "overall": {
+   "n": 171,
+   "type_accuracy": 0.8187,
+   "dept_accuracy": 0.8947,
+   "type_strict": 0.7485,
+   "top10_hit_rate": 0.9883,
+   "baseline_tfidf_type_accuracy": 0.8304
+  },
+  "by_slice": {
+   "ambiguous": {
+    "n": 30,
+    "type_accuracy": 0.8,
+    "dept_accuracy": 0.8333,
+    "type_strict": 0.6,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.8667
+   },
+   "common": {
+    "n": 101,
+    "type_accuracy": 0.8317,
+    "dept_accuracy": 0.9109,
+    "type_strict": 0.7921,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.9109
+   },
+   "long_tail": {
+    "n": 20,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 0.95,
+    "type_strict": 0.9,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "multilingual": {
+    "n": 20,
+    "type_accuracy": 0.6,
+    "dept_accuracy": 0.85,
+    "type_strict": 0.6,
+    "top10_hit_rate": 0.9,
+    "baseline_tfidf_type_accuracy": 0.2
+   }
+  },
+  "by_language": {
+   "en": {
+    "n": 151,
+    "type_accuracy": 0.8477,
+    "dept_accuracy": 0.9007,
+    "type_strict": 0.7682,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.9139
+   },
+   "es": {
+    "n": 4,
+    "type_accuracy": 0.75,
+    "dept_accuracy": 1.0,
+    "type_strict": 0.75,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.5
+   },
+   "ht": {
+    "n": 4,
+    "type_accuracy": 0.25,
+    "dept_accuracy": 0.5,
+    "type_strict": 0.25,
+    "top10_hit_rate": 0.5,
+    "baseline_tfidf_type_accuracy": 0.25
+   },
+   "pt": {
+    "n": 4,
+    "type_accuracy": 0.75,
+    "dept_accuracy": 1.0,
+    "type_strict": 0.75,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.0
+   },
+   "vi": {
+    "n": 4,
+    "type_accuracy": 0.25,
+    "dept_accuracy": 0.75,
+    "type_strict": 0.25,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.0
+   },
+   "zh": {
+    "n": 4,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.25
+   }
+  },
+  "by_department": {
+   "BTDT": {
+    "n": 36,
+    "type_accuracy": 0.9167,
+    "dept_accuracy": 0.9167,
+    "type_strict": 0.8611,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.8889
+   },
+   "BWSC": {
+    "n": 5,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "GEN": {
+    "n": 5,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "INFO": {
+    "n": 5,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 1.0,
+    "type_strict": 1.0,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "ISD": {
+    "n": 28,
+    "type_accuracy": 0.8571,
+    "dept_accuracy": 0.8571,
+    "type_strict": 0.8214,
+    "top10_hit_rate": 0.9643,
+    "baseline_tfidf_type_accuracy": 0.8571
+   },
+   "PARK": {
+    "n": 13,
+    "type_accuracy": 0.8462,
+    "dept_accuracy": 0.9231,
+    "type_strict": 0.8462,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 0.9231
+   },
+   "PROP": {
+    "n": 3,
+    "type_accuracy": 1.0,
+    "dept_accuracy": 0.6667,
+    "type_strict": 0.6667,
+    "top10_hit_rate": 1.0,
+    "baseline_tfidf_type_accuracy": 1.0
+   },
+   "PWDx": {
+    "n": 76,
+    "type_accuracy": 0.7105,
+    "dept_accuracy": 0.8816,
+    "type_strict": 0.6053,
+    "top10_hit_rate": 0.9868,
+    "baseline_tfidf_type_accuracy": 0.7368
+   }
+  },
+  "emergency_recall": 1.0,
+  "emergency_n": 15,
+  "false_emergency_rate": 0.0,
+  "guardrail_refusal_rate": 1.0,
+  "guardrail_n": 15,
+  "wrongly_refused_rate": 0.0058,
+  "clarify_share": 0.005,
+  "ambiguous_first_pass_accuracy": 0.8,
+  "ambiguous_after_followup_accuracy": 0.8,
+  "located_share": 0.2456,
+  "latency_ms_p50": 18867.0,
+  "latency_ms_p95": 37731.0,
+  "tokens_per_request": 472.9,
+  "cost_per_request_usd": 0.0,
+  "cost_note": "Runs on a local Ollama model, so there is no per-request API cost; the cost is the laptop/server CPU time shown as latency.",
+  "leakage_check": {
+   "threshold": 0.85,
+   "n_near_copies": 68,
+   "type_accuracy_excluding_near_copies": 0.767,
+   "n_clean": 103,
+   "note": "Cards and test set were written by the same person; messages within 0.85 cosine of a card example are excluded here."
+  },
+  "confusion_by_department": {
+   "BTDT": {
+    "BTDT": 33,
+    "PWDx": 3
+   },
+   "PWDx": {
+    "PWDx": 67,
+    "ISD": 2,
+    "PARK": 2,
+    "BTDT": 4,
+    "none": 1
+   },
+   "GEN": {
+    "GEN": 5
+   },
+   "PARK": {
+    "PARK": 12,
+    "BTDT": 1
+   },
+   "ISD": {
+    "ISD": 24,
+    "PWDx": 2,
+    "BWSC": 1,
+    "BTDT": 1
+   },
+   "PROP": {
+    "PWDx": 1,
+    "PROP": 2
+   },
+   "INFO": {
+    "INFO": 5
+   },
+   "BWSC": {
+    "BWSC": 5
+   }
+  },
+  "review_queue_curve": [
+   {
+    "cutoff": 0.0,
+    "share_auto": 1.0,
+    "accuracy_auto": 0.8187
+   },
+   {
+    "cutoff": 0.05,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.1,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.15,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.2,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.25,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.3,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.35,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.4,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.45,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.5,
+    "share_auto": 0.9942,
+    "accuracy_auto": 0.8235
+   },
+   {
+    "cutoff": 0.55,
+    "share_auto": 0.9883,
+    "accuracy_auto": 0.8225
+   },
+   {
+    "cutoff": 0.6,
+    "share_auto": 0.9883,
+    "accuracy_auto": 0.8225
+   },
+   {
+    "cutoff": 0.65,
+    "share_auto": 0.9883,
+    "accuracy_auto": 0.8225
+   },
+   {
+    "cutoff": 0.7,
+    "share_auto": 0.9883,
+    "accuracy_auto": 0.8225
+   },
+   {
+    "cutoff": 0.75,
+    "share_auto": 0.9474,
+    "accuracy_auto": 0.8457
+   },
+   {
+    "cutoff": 0.8,
+    "share_auto": 0.848,
+    "accuracy_auto": 0.8966
+   },
+   {
+    "cutoff": 0.85,
+    "share_auto": 0.7251,
+    "accuracy_auto": 0.9919
+   },
+   {
+    "cutoff": 0.9,
+    "share_auto": 0.655,
+    "accuracy_auto": 1.0
+   },
+   {
+    "cutoff": 0.95,
+    "share_auto": 0.5146,
+    "accuracy_auto": 1.0
+   }
+  ],
+  "failures": [
+   {
+    "id": "T011",
+    "slice": "common",
+    "language": "en",
+    "label": "Parking Enforcement",
+    "pred": "Requests for Street Cleaning",
+    "status": "routed",
+    "confidence": 0.821
+   },
+   {
+    "id": "T016",
+    "slice": "common",
+    "language": "en",
+    "label": "Improper Storage of Trash (Barrels)",
+    "pred": "CE Collection",
+    "status": "routed",
+    "confidence": 0.807
+   },
+   {
+    "id": "T017",
+    "slice": "common",
+    "language": "en",
+    "label": "Improper Storage of Trash (Barrels)",
+    "pred": "Rodent Activity",
+    "status": "routed",
+    "confidence": 0.837
+   },
+   {
+    "id": "T022",
+    "slice": "common",
+    "language": "en",
+    "label": "Improper Storage of Trash (Barrels)",
+    "pred": "Empty Litter Basket",
+    "status": "routed",
+    "confidence": 0.839
+   },
+   {
+    "id": "T029",
+    "slice": "common",
+    "language": "en",
+    "label": "Missed Trash/Recycling/Yard Waste/Bulk Item",
+    "pred": "Improper Storage of Trash (Barrels)",
+    "status": "routed",
+    "confidence": 0.832
+   },
+   {
+    "id": "T039",
+    "slice": "common",
+    "language": "en",
+    "label": "Poor Conditions of Property",
+    "pred": "Improper Storage of Trash (Barrels)",
+    "status": "routed",
+    "confidence": 0.844
+   },
+   {
+    "id": "T040",
+    "slice": "common",
+    "language": "en",
+    "label": "Poor Conditions of Property",
+    "pred": "Unsafe Dangerous Conditions",
+    "status": "routed",
+    "confidence": 0.81
+   },
+   {
+    "id": "T043",
+    "slice": "common",
+    "language": "en",
+    "label": "Illegal Dumping",
+    "pred": "Illegal Vending",
+    "status": "routed",
+    "confidence": 0.79
+   },
+   {
+    "id": "T046",
+    "slice": "common",
+    "language": "en",
+    "label": "Tree Maintenance Requests",
+    "pred": "Sign Repair",
+    "status": "routed",
+    "confidence": 0.839
+   },
+   {
+    "id": "T047",
+    "slice": "common",
+    "language": "en",
+    "label": "Tree Maintenance Requests",
+    "pred": "Tree Emergencies",
+    "status": "routed",
+    "confidence": 0.769
+   },
+   {
+    "id": "T054",
+    "slice": "common",
+    "language": "en",
+    "label": "Sign Repair",
+    "pred": "Street Light Knock Downs",
+    "status": "routed",
+    "confidence": 0.879
+   },
+   {
+    "id": "T065",
+    "slice": "common",
+    "language": "en",
+    "label": "Unshoveled Sidewalk",
+    "pred": "Tree Maintenance Requests",
+    "status": "routed",
+    "confidence": 0.81
+   },
+   {
+    "id": "T068",
+    "slice": "common",
+    "language": "en",
+    "label": "Street Light Outages",
+    "pred": "Street Light Knock Downs",
+    "status": "routed",
+    "confidence": 0.796
+   },
+   {
+    "id": "T069",
+    "slice": "common",
+    "language": "en",
+    "label": "Street Light Outages",
+    "pred": "Street Light Knock Downs",
+    "status": "routed",
+    "confidence": 0.804
+   },
+   {
+    "id": "T073",
+    "slice": "common",
+    "language": "en",
+    "label": "Requests for Street Cleaning",
+    "pred": "Sidewalk Repair (Make Safe)",
+    "status": "routed",
+    "confidence": 0.728
+   },
+   {
+    "id": "T074",
+    "slice": "common",
+    "language": "en",
+    "label": "Requests for Street Cleaning",
+    "pred": "Abandoned Vehicles",
+    "status": "routed",
+    "confidence": 0.801
+   },
+   {
+    "id": "T082",
+    "slice": "common",
+    "language": "en",
+    "label": "Sidewalk Repair (Make Safe)",
+    "pred": "Tree Maintenance Requests",
+    "status": "routed",
+    "confidence": 0.797
+   },
+   {
+    "id": "T134",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Schedule a Bulk Item Pickup",
+    "pred": "Empty Litter Basket",
+    "status": "routed",
+    "confidence": 0.755
+   },
+   {
+    "id": "T136",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Working Beyond Hours",
+    "pred": "Construction Debris",
+    "status": "routed",
+    "confidence": 0.776
+   },
+   {
+    "id": "T140",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Missed Trash/Recycling/Yard Waste/Bulk Item",
+    "pred": "Empty Litter Basket",
+    "status": "routed",
+    "confidence": 0.826
+   },
+   {
+    "id": "T141",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Illegal Dumping",
+    "pred": "Parking Enforcement",
+    "status": "routed",
+    "confidence": 0.8
+   },
+   {
+    "id": "T142",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Requests for Traffic Signal Studies or Reviews",
+    "pred": "Roadway Repair",
+    "status": "routed",
+    "confidence": 0.72
+   },
+   {
+    "id": "T147",
+    "slice": "ambiguous",
+    "language": "en",
+    "label": "Rodent Activity",
+    "pred": "BWSC General Request",
+    "status": "routed",
+    "confidence": 0.78
+   },
+   {
+    "id": "T155",
+    "slice": "multilingual",
+    "language": "es",
+    "label": "Street Light Outages",
+    "pred": "Street Light Knock Downs",
+    "status": "routed",
+    "confidence": 0.781
+   },
+   {
+    "id": "T156",
+    "slice": "multilingual",
+    "language": "ht",
+    "label": "Request for Pothole Repair",
+    "pred": "Sidewalk Repair (Make Safe)",
+    "status": "routed",
+    "confidence": 0.72
+   },
+   {
+    "id": "T157",
+    "slice": "multilingual",
+    "language": "ht",
+    "label": "Missed Trash/Recycling/Yard Waste/Bulk Item",
+    "pred": null,
+    "status": "refused",
+    "confidence": NaN
+   },
+   {
+    "id": "T159",
+    "slice": "multilingual",
+    "language": "ht",
+    "label": "Heat - Excessive  Insufficient",
+    "pred": "Sign Repair",
+    "status": "routed",
+    "confidence": 0.755
+   },
+   {
+    "id": "T164",
+    "slice": "multilingual",
+    "language": "vi",
+    "label": "Request for Pothole Repair",
+    "pred": "Missing Sign",
+    "status": "routed",
+    "confidence": 0.755
+   },
+   {
+    "id": "T166",
+    "slice": "multilingual",
+    "language": "vi",
+    "label": "Rodent Activity",
+    "pred": "Mice Infestation - Residential",
+    "status": "routed",
+    "confidence": 0.8
+   },
+   {
+    "id": "T167",
+    "slice": "multilingual",
+    "language": "vi",
+    "label": "Street Light Outages",
+    "pred": "Street Light Knock Downs",
+    "status": "routed",
+    "confidence": 0.733
+   },
+   {
+    "id": "T171",
+    "slice": "multilingual",
+    "language": "pt",
+    "label": "Schedule a Bulk Item Pickup",
+    "pred": "Schedule a Bulk Item Pickup SS",
+    "status": "routed",
+    "confidence": 0.733
+   }
+  ],
+  "mode": "llm"
+ }
+}

@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+web/dist/
+data/raw/
+data/processed/*.duckdb
+data/processed/*.duckdb.wal
+data/app.sqlite
+data/demo_cache.json
+data/geocode_cache.json
+eval/llm_run.log
+contracts/plan_history/
+.env
+.DS_Store

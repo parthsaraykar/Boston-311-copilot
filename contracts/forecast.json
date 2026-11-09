@@ -1,0 +1,1853 @@
+{
+ "plan_year": 2025,
+ "forecast": [
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-01",
+   "mean": 1243.0,
+   "p10": 1180.9,
+   "p90": 1427.7,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1121.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-02",
+   "mean": 1172.5,
+   "p10": 1113.9,
+   "p90": 1346.7,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 912.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-03",
+   "mean": 1127.8,
+   "p10": 1071.4,
+   "p90": 1295.3,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1171.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-04",
+   "mean": 1182.7,
+   "p10": 1123.6,
+   "p90": 1358.4,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1166.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-05",
+   "mean": 1317.1,
+   "p10": 1251.2,
+   "p90": 1512.7,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1215.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-06",
+   "mean": 1467.7,
+   "p10": 1394.3,
+   "p90": 1685.7,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1540.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-07",
+   "mean": 1501.9,
+   "p10": 1426.8,
+   "p90": 1725.0,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1735.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-08",
+   "mean": 1679.4,
+   "p10": 1595.5,
+   "p90": 1928.9,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1698.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-09",
+   "mean": 1563.3,
+   "p10": 1485.1,
+   "p90": 1795.5,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1626.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-10",
+   "mean": 1381.3,
+   "p10": 1312.2,
+   "p90": 1586.5,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1396.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-11",
+   "mean": 1215.3,
+   "p10": 1154.5,
+   "p90": 1395.8,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1218.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-12",
+   "mean": 1137.2,
+   "p10": 1080.4,
+   "p90": 1306.2,
+   "model": "ets",
+   "backtest_wape": 0.0606,
+   "actual": 1156.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-01",
+   "mean": 860.5,
+   "p10": 689.4,
+   "p90": 975.1,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 635.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-02",
+   "mean": 782.7,
+   "p10": 627.0,
+   "p90": 886.9,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 391.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-03",
+   "mean": 1158.9,
+   "p10": 928.4,
+   "p90": 1313.2,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 994.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-04",
+   "mean": 1392.6,
+   "p10": 1115.6,
+   "p90": 1577.9,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 979.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-05",
+   "mean": 2049.1,
+   "p10": 1641.6,
+   "p90": 2321.8,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 1396.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-06",
+   "mean": 2549.6,
+   "p10": 2042.6,
+   "p90": 2889.0,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 1767.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-07",
+   "mean": 2360.7,
+   "p10": 1891.2,
+   "p90": 2674.9,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 1615.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-08",
+   "mean": 2272.3,
+   "p10": 1820.4,
+   "p90": 2574.8,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 1817.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-09",
+   "mean": 1564.1,
+   "p10": 1253.1,
+   "p90": 1772.3,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 1428.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-10",
+   "mean": 1254.2,
+   "p10": 1004.8,
+   "p90": 1421.1,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 1119.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-11",
+   "mean": 902.8,
+   "p10": 723.3,
+   "p90": 1023.0,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 328.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-12",
+   "mean": 930.5,
+   "p10": 745.5,
+   "p90": 1054.4,
+   "model": "ets",
+   "backtest_wape": 0.4236,
+   "actual": 230.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-01",
+   "mean": 12946.0,
+   "p10": 11121.2,
+   "p90": 14147.0,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 9250.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-02",
+   "mean": 11094.0,
+   "p10": 9530.2,
+   "p90": 12123.2,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 11996.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-03",
+   "mean": 12581.0,
+   "p10": 10807.6,
+   "p90": 13748.2,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 10205.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-04",
+   "mean": 13441.0,
+   "p10": 11546.4,
+   "p90": 14688.0,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 9928.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-05",
+   "mean": 12937.0,
+   "p10": 11113.5,
+   "p90": 14137.2,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 10671.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-06",
+   "mean": 12547.0,
+   "p10": 10778.4,
+   "p90": 13711.0,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 11215.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-07",
+   "mean": 13516.0,
+   "p10": 11610.8,
+   "p90": 14769.9,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 11712.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-08",
+   "mean": 16053.0,
+   "p10": 13790.2,
+   "p90": 17542.3,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 14541.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-09",
+   "mean": 15611.0,
+   "p10": 13410.5,
+   "p90": 17059.3,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 13741.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-10",
+   "mean": 11414.0,
+   "p10": 9805.1,
+   "p90": 12472.9,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 9766.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-11",
+   "mean": 9977.0,
+   "p10": 8570.7,
+   "p90": 10902.6,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 8431.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-12",
+   "mean": 10845.0,
+   "p10": 9316.3,
+   "p90": 11851.1,
+   "model": "seasonal_naive",
+   "backtest_wape": 0.1974,
+   "actual": 7794.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-01",
+   "mean": 5610.0,
+   "p10": 5234.7,
+   "p90": 5919.2,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 5820.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-02",
+   "mean": 5984.7,
+   "p10": 5584.2,
+   "p90": 6314.5,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 5721.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-03",
+   "mean": 7043.3,
+   "p10": 6572.0,
+   "p90": 7431.5,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 7130.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-04",
+   "mean": 6978.0,
+   "p10": 6511.1,
+   "p90": 7362.6,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6815.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-05",
+   "mean": 7509.0,
+   "p10": 7006.5,
+   "p90": 7922.7,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6932.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-06",
+   "mean": 7206.0,
+   "p10": 6723.9,
+   "p90": 7603.1,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6731.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-07",
+   "mean": 6692.2,
+   "p10": 6244.4,
+   "p90": 7061.0,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6487.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-08",
+   "mean": 6700.8,
+   "p10": 6252.4,
+   "p90": 7070.1,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6545.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-09",
+   "mean": 7594.6,
+   "p10": 7086.4,
+   "p90": 8013.1,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 7735.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-10",
+   "mean": 7657.7,
+   "p10": 7145.3,
+   "p90": 8079.7,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6841.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-11",
+   "mean": 6570.2,
+   "p10": 6130.6,
+   "p90": 6932.3,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 6003.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-12",
+   "mean": 5561.9,
+   "p10": 5189.7,
+   "p90": 5868.4,
+   "model": "seasonal_naive_trend",
+   "backtest_wape": 0.0469,
+   "actual": 5549.0
+  }
+ ],
+ "backtests": {
+  "Inspectional Services": {
+   "chosen": "ets",
+   "train_2023_test_2024": {
+    "seasonal_naive": 0.1141,
+    "ets": 0.0883,
+    "seasonal_naive_trend": 0.1414
+   },
+   "train_2023_24_test_2025": {
+    "seasonal_naive": 0.071,
+    "ets": 0.0606,
+    "seasonal_naive_trend": 0.0778
+   },
+   "series_2025": {
+    "actual": [
+     1121.0,
+     912.0,
+     1171.0,
+     1166.0,
+     1215.0,
+     1540.0,
+     1735.0,
+     1698.0,
+     1626.0,
+     1396.0,
+     1218.0,
+     1156.0
+    ],
+    "pred": [
+     1243.0026289979419,
+     1172.4965998569244,
+     1127.8000636273644,
+     1182.734371239991,
+     1317.0564324718132,
+     1467.656044968994,
+     1501.9116349360183,
+     1679.4450377602861,
+     1563.2584830592282,
+     1381.2743692172996,
+     1215.2586720872846,
+     1137.228149550883
+    ],
+    "naive": [
+     1223.0,
+     1110.0,
+     1140.0,
+     1243.0,
+     1346.0,
+     1500.0,
+     1599.0,
+     1821.0,
+     1598.0,
+     1409.0,
+     1041.0,
+     1080.0
+    ]
+   },
+   "series_2024": {
+    "actual": [
+     1223.0,
+     1110.0,
+     1140.0,
+     1243.0,
+     1346.0,
+     1500.0,
+     1599.0,
+     1821.0,
+     1598.0,
+     1409.0,
+     1041.0,
+     1080.0
+    ],
+    "pred": [
+     1205.4124709644268,
+     1151.903693274573,
+     1075.8946456411065,
+     1105.4118140276032,
+     1247.395048064794,
+     1386.6759703580897,
+     1388.9418882860102,
+     1536.8899850406772,
+     1474.8181465103623,
+     1303.4641654593374,
+     1238.574874046697,
+     1108.902143778773
+    ],
+    "naive": [
+     1169.0,
+     1500.0,
+     1106.0,
+     1077.0,
+     1218.0,
+     1511.0,
+     1420.0,
+     1528.0,
+     1481.0,
+     1324.0,
+     1325.0,
+     1177.0
+    ]
+   }
+  },
+  "Parks": {
+   "chosen": "ets",
+   "train_2023_test_2024": {
+    "seasonal_naive": 0.156,
+    "ets": 0.1243,
+    "seasonal_naive_trend": 0.134
+   },
+   "train_2023_24_test_2025": {
+    "seasonal_naive": 0.3595,
+    "ets": 0.4236,
+    "seasonal_naive_trend": 0.3578
+   },
+   "series_2025": {
+    "actual": [
+     635.0,
+     391.0,
+     994.0,
+     979.0,
+     1396.0,
+     1767.0,
+     1615.0,
+     1817.0,
+     1428.0,
+     1119.0,
+     328.0,
+     230.0
+    ],
+    "pred": [
+     860.5222736748304,
+     782.6836299936535,
+     1158.9292872089377,
+     1392.5709732016232,
+     2049.063513223297,
+     2549.606851820437,
+     2360.6696492721217,
+     2272.3339646503055,
+     1564.1284837568521,
+     1254.2148234641604,
+     902.8240427207742,
+     930.5248539888076
+    ],
+    "naive": [
+     858.0,
+     722.0,
+     1175.0,
+     1369.0,
+     1859.0,
+     2647.0,
+     2420.0,
+     1934.0,
+     1458.0,
+     1057.0,
+     878.0,
+     763.0
+    ]
+   },
+   "series_2024": {
+    "actual": [
+     858.0,
+     722.0,
+     1175.0,
+     1369.0,
+     1859.0,
+     2647.0,
+     2420.0,
+     1934.0,
+     1458.0,
+     1057.0,
+     878.0,
+     763.0
+    ],
+    "pred": [
+     761.5912392885039,
+     743.5154457772036,
+     1036.3195788628054,
+     1284.7469179292084,
+     2011.0983159193831,
+     2294.0811115128777,
+     2161.1121297566838,
+     2359.302532999024,
+     1549.3605092470411,
+     1322.8077802332675,
+     880.5838725960396,
+     1004.4399754935433
+    ],
+    "naive": [
+     728.0,
+     604.0,
+     848.0,
+     1119.0,
+     1804.0,
+     2082.0,
+     2041.0,
+     2151.0,
+     1370.0,
+     1230.0,
+     737.0,
+     993.0
+    ]
+   }
+  },
+  "Public Works": {
+   "chosen": "seasonal_naive",
+   "train_2023_test_2024": {
+    "seasonal_naive": 0.1211,
+    "ets": 0.2461,
+    "seasonal_naive_trend": 0.3301
+   },
+   "train_2023_24_test_2025": {
+    "seasonal_naive": 0.1974,
+    "ets": 0.205,
+    "seasonal_naive_trend": 0.0839
+   },
+   "series_2025": {
+    "actual": [
+     9250.0,
+     11996.0,
+     10205.0,
+     9928.0,
+     10671.0,
+     11215.0,
+     11712.0,
+     14541.0,
+     13741.0,
+     9766.0,
+     8431.0,
+     7794.0
+    ],
+    "pred": [
+     12946.0,
+     11094.0,
+     12581.0,
+     13441.0,
+     12937.0,
+     12547.0,
+     13516.0,
+     16053.0,
+     15611.0,
+     11414.0,
+     9977.0,
+     10845.0
+    ],
+    "naive": [
+     12946.0,
+     11094.0,
+     12581.0,
+     13441.0,
+     12937.0,
+     12547.0,
+     13516.0,
+     16053.0,
+     15611.0,
+     11414.0,
+     9977.0,
+     10845.0
+    ]
+   },
+   "series_2024": {
+    "actual": [
+     12946.0,
+     11094.0,
+     12581.0,
+     13441.0,
+     12937.0,
+     12547.0,
+     13516.0,
+     16053.0,
+     15611.0,
+     11414.0,
+     9977.0,
+     10845.0
+    ],
+    "pred": [
+     12205.0,
+     9459.0,
+     11771.0,
+     12270.0,
+     14538.0,
+     14181.0,
+     15339.0,
+     19294.0,
+     17751.0,
+     13322.0,
+     11277.0,
+     11361.0
+    ],
+    "naive": [
+     12205.0,
+     9459.0,
+     11771.0,
+     12270.0,
+     14538.0,
+     14181.0,
+     15339.0,
+     19294.0,
+     17751.0,
+     13322.0,
+     11277.0,
+     11361.0
+    ]
+   }
+  },
+  "Transportation": {
+   "chosen": "seasonal_naive_trend",
+   "train_2023_test_2024": {
+    "seasonal_naive": 0.0716,
+    "ets": 0.0472,
+    "seasonal_naive_trend": 0.045
+   },
+   "train_2023_24_test_2025": {
+    "seasonal_naive": 0.046,
+    "ets": 0.0356,
+    "seasonal_naive_trend": 0.0469
+   },
+   "series_2025": {
+    "actual": [
+     5820.0,
+     5721.0,
+     7130.0,
+     6815.0,
+     6932.0,
+     6731.0,
+     6487.0,
+     6545.0,
+     7735.0,
+     6841.0,
+     6003.0,
+     5549.0
+    ],
+    "pred": [
+     5610.045098204501,
+     5984.690353760994,
+     7043.3308044620535,
+     6978.035488493636,
+     7508.961336367979,
+     7206.033886875159,
+     6692.234679254826,
+     6700.797999381832,
+     7594.594537638035,
+     7657.749023574701,
+     6570.2073674449975,
+     5561.876422490095
+    ],
+    "naive": [
+     5241.0,
+     5591.0,
+     6580.0,
+     6519.0,
+     7015.0,
+     6732.0,
+     6252.0,
+     6260.0,
+     7095.0,
+     7154.0,
+     6138.0,
+     5196.0
+    ]
+   },
+   "series_2024": {
+    "actual": [
+     5241.0,
+     5591.0,
+     6580.0,
+     6519.0,
+     7015.0,
+     6732.0,
+     6252.0,
+     6260.0,
+     7095.0,
+     7154.0,
+     6138.0,
+     5196.0
+    ],
+    "pred": [
+     5633.41845065312,
+     5293.368740928882,
+     6869.865021770682,
+     6238.190402757619,
+     6838.657928156748,
+     6823.592434687953,
+     5577.460903483308,
+     6519.054245283019,
+     7334.7431059506525,
+     7110.912917271407,
+     6015.436320754717,
+     5739.95301161103
+    ],
+    "naive": [
+     5235.0,
+     4919.0,
+     6384.0,
+     5797.0,
+     6355.0,
+     6341.0,
+     5183.0,
+     6058.0,
+     6816.0,
+     6608.0,
+     5590.0,
+     5334.0
+    ]
+   }
+  }
+ },
+ "history": [
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-01",
+   "requests": 1380.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-02",
+   "requests": 950.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-03",
+   "requests": 1171.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-04",
+   "requests": 1260.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-05",
+   "requests": 1419.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-06",
+   "requests": 1426.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-07",
+   "requests": 1518.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-08",
+   "requests": 1721.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-09",
+   "requests": 1637.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-10",
+   "requests": 1432.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-11",
+   "requests": 1296.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2022-12",
+   "requests": 1169.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-01",
+   "requests": 1169.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-02",
+   "requests": 1500.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-03",
+   "requests": 1106.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-04",
+   "requests": 1077.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-05",
+   "requests": 1218.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-06",
+   "requests": 1511.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-07",
+   "requests": 1420.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-08",
+   "requests": 1528.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-09",
+   "requests": 1481.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-10",
+   "requests": 1324.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-11",
+   "requests": 1325.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2023-12",
+   "requests": 1177.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-01",
+   "requests": 1223.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-02",
+   "requests": 1110.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-03",
+   "requests": 1140.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-04",
+   "requests": 1243.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-05",
+   "requests": 1346.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-06",
+   "requests": 1500.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-07",
+   "requests": 1599.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-08",
+   "requests": 1821.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-09",
+   "requests": 1598.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-10",
+   "requests": 1409.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-11",
+   "requests": 1041.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2024-12",
+   "requests": 1080.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-01",
+   "requests": 1121.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-02",
+   "requests": 912.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-03",
+   "requests": 1171.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-04",
+   "requests": 1166.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-05",
+   "requests": 1215.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-06",
+   "requests": 1540.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-07",
+   "requests": 1735.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-08",
+   "requests": 1698.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-09",
+   "requests": 1626.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-10",
+   "requests": 1396.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-11",
+   "requests": 1218.0
+  },
+  {
+   "dept": "Inspectional Services",
+   "month": "2025-12",
+   "requests": 1156.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-01",
+   "requests": 554.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-02",
+   "requests": 665.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-03",
+   "requests": 924.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-04",
+   "requests": 1074.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-05",
+   "requests": 1630.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-06",
+   "requests": 1841.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-07",
+   "requests": 1653.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-08",
+   "requests": 1900.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-09",
+   "requests": 1301.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-10",
+   "requests": 1048.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-11",
+   "requests": 792.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2022-12",
+   "requests": 737.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-01",
+   "requests": 728.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-02",
+   "requests": 604.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-03",
+   "requests": 848.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-04",
+   "requests": 1119.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-05",
+   "requests": 1804.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-06",
+   "requests": 2082.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-07",
+   "requests": 2041.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-08",
+   "requests": 2151.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-09",
+   "requests": 1370.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-10",
+   "requests": 1230.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-11",
+   "requests": 737.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2023-12",
+   "requests": 993.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-01",
+   "requests": 858.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-02",
+   "requests": 722.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-03",
+   "requests": 1175.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-04",
+   "requests": 1369.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-05",
+   "requests": 1859.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-06",
+   "requests": 2647.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-07",
+   "requests": 2420.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-08",
+   "requests": 1934.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-09",
+   "requests": 1458.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-10",
+   "requests": 1057.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-11",
+   "requests": 878.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2024-12",
+   "requests": 763.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-01",
+   "requests": 635.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-02",
+   "requests": 391.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-03",
+   "requests": 994.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-04",
+   "requests": 979.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-05",
+   "requests": 1396.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-06",
+   "requests": 1767.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-07",
+   "requests": 1615.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-08",
+   "requests": 1817.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-09",
+   "requests": 1428.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-10",
+   "requests": 1119.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-11",
+   "requests": 328.0
+  },
+  {
+   "dept": "Parks",
+   "month": "2025-12",
+   "requests": 230.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-01",
+   "requests": 9935.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-02",
+   "requests": 12843.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-03",
+   "requests": 10446.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-04",
+   "requests": 9689.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-05",
+   "requests": 10287.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-06",
+   "requests": 10709.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-07",
+   "requests": 10752.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-08",
+   "requests": 13131.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-09",
+   "requests": 13148.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-10",
+   "requests": 9831.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-11",
+   "requests": 9742.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2022-12",
+   "requests": 8337.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-01",
+   "requests": 12205.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-02",
+   "requests": 9459.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-03",
+   "requests": 11771.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-04",
+   "requests": 12270.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-05",
+   "requests": 14538.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-06",
+   "requests": 14181.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-07",
+   "requests": 15339.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-08",
+   "requests": 19294.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-09",
+   "requests": 17751.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-10",
+   "requests": 13322.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-11",
+   "requests": 11277.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2023-12",
+   "requests": 11361.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-01",
+   "requests": 12946.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-02",
+   "requests": 11094.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-03",
+   "requests": 12581.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-04",
+   "requests": 13441.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-05",
+   "requests": 12937.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-06",
+   "requests": 12547.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-07",
+   "requests": 13516.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-08",
+   "requests": 16053.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-09",
+   "requests": 15611.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-10",
+   "requests": 11414.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-11",
+   "requests": 9977.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2024-12",
+   "requests": 10845.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-01",
+   "requests": 9250.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-02",
+   "requests": 11996.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-03",
+   "requests": 10205.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-04",
+   "requests": 9928.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-05",
+   "requests": 10671.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-06",
+   "requests": 11215.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-07",
+   "requests": 11712.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-08",
+   "requests": 14541.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-09",
+   "requests": 13741.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-10",
+   "requests": 9766.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-11",
+   "requests": 8431.0
+  },
+  {
+   "dept": "Public Works",
+   "month": "2025-12",
+   "requests": 7794.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-01",
+   "requests": 4910.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-02",
+   "requests": 5049.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-03",
+   "requests": 6204.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-04",
+   "requests": 6365.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-05",
+   "requests": 6359.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-06",
+   "requests": 5717.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-07",
+   "requests": 5181.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-08",
+   "requests": 5866.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-09",
+   "requests": 6122.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-10",
+   "requests": 5772.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-11",
+   "requests": 5173.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2022-12",
+   "requests": 4958.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-01",
+   "requests": 5235.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-02",
+   "requests": 4919.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-03",
+   "requests": 6384.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-04",
+   "requests": 5797.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-05",
+   "requests": 6355.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-06",
+   "requests": 6341.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-07",
+   "requests": 5183.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-08",
+   "requests": 6058.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-09",
+   "requests": 6816.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-10",
+   "requests": 6608.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-11",
+   "requests": 5590.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2023-12",
+   "requests": 5334.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-01",
+   "requests": 5241.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-02",
+   "requests": 5591.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-03",
+   "requests": 6580.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-04",
+   "requests": 6519.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-05",
+   "requests": 7015.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-06",
+   "requests": 6732.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-07",
+   "requests": 6252.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-08",
+   "requests": 6260.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-09",
+   "requests": 7095.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-10",
+   "requests": 7154.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-11",
+   "requests": 6138.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2024-12",
+   "requests": 5196.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-01",
+   "requests": 5820.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-02",
+   "requests": 5721.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-03",
+   "requests": 7130.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-04",
+   "requests": 6815.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-05",
+   "requests": 6932.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-06",
+   "requests": 6731.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-07",
+   "requests": 6487.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-08",
+   "requests": 6545.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-09",
+   "requests": 7735.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-10",
+   "requests": 6841.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-11",
+   "requests": 6003.0
+  },
+  {
+   "dept": "Transportation",
+   "month": "2025-12",
+   "requests": 5549.0
+  }
+ ]
+}

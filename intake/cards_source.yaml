@@ -1,0 +1,287 @@
+# Hand-written category cards: one per request type in the catalog (72 types cover the 170
+# type/department/queue combinations; the queue is chosen from the location).
+# name: resident-friendly name. desc: one line. ex: three example resident phrasings.
+Parking Enforcement:
+  name: Illegally parked car
+  desc: A vehicle parked illegally - blocking a driveway, hydrant, crosswalk, bike lane, handicap spot or resident-only space.
+  ex: ["someone is parked across my driveway and I can't get out", "car blocking the fire hydrant on my street", "truck double parked in the bike lane all morning"]
+Improper Storage of Trash (Barrels):
+  name: Trash barrels left out or overflowing
+  desc: Trash or barrels stored improperly, left on the sidewalk after collection day, or bags without lids attracting animals.
+  ex: ["my neighbor's trash barrels are always on the sidewalk", "garbage bags piled up next to the building with no lids", "overflowing trash cans in front of the apartment building"]
+Mattress_Pickup:
+  name: Mattress pickup
+  desc: Schedule removal of a mattress or box spring left for collection.
+  ex: ["I need a mattress picked up", "there is an old mattress on the curb", "how do I get rid of a box spring"]
+Missed Trash/Recycling/Yard Waste/Bulk Item:
+  name: Missed trash or recycling pickup
+  desc: Trash, recycling, yard waste or a bulk item was not collected on the scheduled day.
+  ex: ["they skipped our trash pickup this week", "recycling wasn't collected on my street", "yard waste bags still sitting there two days after pickup day"]
+Needle Pickup:
+  name: Discarded needle
+  desc: A used syringe or needle found on a sidewalk, park, playground or other public place.
+  ex: ["there's a used needle on the playground", "syringes on the sidewalk near the bus stop", "found needles behind the library"]
+Poor Conditions of Property:
+  name: Property in poor condition
+  desc: Litter, overgrown weeds or debris on a private lot or around a building.
+  ex: ["the vacant lot next door is full of trash and weeds", "property is covered in litter and junk", "abandoned house with garbage everywhere in the yard"]
+Schedule a Bulk Item Pickup:
+  name: Bulk item pickup
+  desc: Schedule collection of furniture, appliances or other large household items.
+  ex: ["I want to schedule a couch pickup", "need to get rid of an old fridge", "pickup for a dresser and table please"]
+CE Collection:
+  name: Code enforcement trash collection
+  desc: Trash or bulk items left out on the wrong day that city code enforcement needs to collect.
+  ex: ["someone left a pile of trash bags out on the wrong day", "bags dumped at the corner days before collection", "furniture left out on the street not on pickup day"]
+Tree Maintenance Requests:
+  name: Tree trimming or maintenance
+  desc: A city tree needs pruning, has low or dead branches, or is blocking a sign, light or sidewalk.
+  ex: ["the tree in front of my house needs trimming", "dead branches hanging over the sidewalk", "street tree is blocking the stop sign"]
+Schedule a Bulk Item Pickup SS:
+  name: Bulk item pickup (self-service)
+  desc: Self-service scheduling of a furniture or appliance pickup online.
+  ex: ["schedule pickup for an old chair online", "book a bulk item pickup for my washer", "I want to put out a sofa for pickup next week"]
+Rodent Activity:
+  name: Rats or rodents outside
+  desc: Rats or rodents seen outdoors - in alleys, yards, sidewalks, dumpsters or burrows.
+  ex: ["rats running around the alley behind our building", "rat burrows in the yard next door", "I keep seeing rodents near the dumpsters"]
+Sign Repair:
+  name: Damaged street sign
+  desc: A street or traffic sign that is damaged, bent, faded, knocked down or turned the wrong way.
+  ex: ["the stop sign at the corner is bent over", "street sign knocked down by a car", "one way sign is faded and you can't read it"]
+Abandoned Vehicles:
+  name: Abandoned vehicle
+  desc: A vehicle that hasn't moved in a long time, has no plates, flat tires or looks abandoned.
+  ex: ["a car with no plates has been sitting here for weeks", "abandoned van with flat tires on our street", "this car hasn't moved in a month and is covered in tickets"]
+Recycling Cart Return:
+  name: Return or replace a recycling cart
+  desc: Return an unwanted recycling cart or replace a broken or damaged one.
+  ex: ["my recycling bin is cracked and needs replacing", "I want to return an extra recycling cart", "the lid on our blue cart is broken"]
+Request for Recycling Cart:
+  name: New recycling cart
+  desc: Request a new recycling cart for a home.
+  ex: ["I need a recycling bin for my apartment", "we never got a blue recycling cart", "can I get a second recycling cart"]
+Unshoveled Sidewalk:
+  name: Unshoveled sidewalk
+  desc: A sidewalk that hasn't been cleared of snow or ice after a storm.
+  ex: ["the sidewalk in front of the store hasn't been shoveled", "icy sidewalk nobody cleared, people are slipping", "business never shovels its sidewalk after snow"]
+Street Light Outages:
+  name: Streetlight out
+  desc: A streetlight is out, flickering or on during the day.
+  ex: ["the streetlight on my corner is out", "street lamp keeps flickering all night", "it's really dark, the light pole by the park is broken"]
+Requests for Street Cleaning:
+  name: Street cleaning
+  desc: Litter, broken glass, leaves or debris in the street or gutter that needs sweeping.
+  ex: ["the street is covered in broken glass", "lots of litter and leaves in the gutter", "road needs sweeping, trash everywhere after the parade"]
+Illegal Dumping:
+  name: Illegal dumping
+  desc: Large amounts of trash, tires, construction materials or furniture dumped illegally on public or private land.
+  ex: ["someone dumped a pile of tires in the empty lot", "people keep dumping construction trash by the tracks", "a truck dumped garbage at the end of our dead end street"]
+Animal Generic Request:
+  name: Animal issue
+  desc: An animal problem such as a loose or stray dog, a wild animal, an injured animal or animal noise.
+  ex: ["there's a stray dog running loose on our street", "a raccoon is stuck in our trash", "injured bird in the park"]
+Sidewalk Repair (Make Safe):
+  name: Broken sidewalk
+  desc: A sidewalk that is cracked, raised, heaved or has a hole that is a tripping hazard.
+  ex: ["the sidewalk is cracked and raised, someone will trip", "big hole in the sidewalk outside my house", "tree roots pushed up the sidewalk slabs"]
+Sticker Request:
+  name: Trash sticker request
+  desc: Request stickers needed for disposing of certain items such as appliances or large items.
+  ex: ["how do I get a sticker for a bulk item", "need a sticker to put out an old TV", "where do I get trash stickers"]
+Traffic Signal Inspection:
+  name: Broken traffic signal
+  desc: A traffic light or pedestrian signal that is out, stuck, flashing, damaged or timed wrong.
+  ex: ["the traffic light at the intersection is stuck on red", "walk signal button doesn't work", "traffic signal is out and cars are confused"]
+Graffiti Removal:
+  name: Graffiti
+  desc: Graffiti or tags on a building, wall, mailbox or other property that needs removal.
+  ex: ["someone spray painted graffiti on the side of our building", "tags all over the mailbox", "graffiti on the bridge wall"]
+Unsatisfactory Living Conditions:
+  name: Unsafe or unhealthy apartment
+  desc: Housing code problems in a rental - no repairs, broken windows, leaks, no smoke detectors or other unsafe conditions.
+  ex: ["my landlord won't fix the leaking ceiling", "the apartment has broken windows and no smoke detector", "my rental is in terrible condition and the owner ignores us"]
+New Tree Requests:
+  name: Plant a new street tree
+  desc: Request a new city tree planted on the sidewalk or in an empty tree pit.
+  ex: ["can the city plant a tree in front of my house", "the empty tree pit on our block needs a tree", "request a new street tree"]
+Request for Pothole Repair:
+  name: Pothole
+  desc: A pothole or hole in the road surface.
+  ex: ["big pothole in the middle of the road", "there's a hole in the street that almost blew my tire", "deep pothole near the intersection"]
+Pest Infestation - Residential:
+  name: Pests in a home
+  desc: Cockroaches, bed bugs or other insect infestation inside a home or apartment.
+  ex: ["our apartment is infested with cockroaches", "bed bugs in my unit and the landlord won't treat it", "bugs everywhere in the kitchen"]
+Pick up Dead Animal:
+  name: Dead animal
+  desc: A dead animal on the street, sidewalk or public property that needs removal.
+  ex: ["there's a dead raccoon in the road", "dead cat on the sidewalk", "dead squirrel in front of my house"]
+Abandoned Bicycle:
+  name: Abandoned bike
+  desc: A bicycle that has been locked or left in one place a long time, stripped or missing parts.
+  ex: ["a bike has been chained to the pole for months with no wheels", "abandoned bicycle at the bike rack", "rusty old bike left on the sidewalk"]
+Contractor Complaints:
+  name: Street contractor complaint
+  desc: A complaint about a contractor's work in the public street or sidewalk - unsafe trench, bad patch, blocked road.
+  ex: ["the utility company left a bad patch in the road", "construction crew dug up the street and left a mess", "contractors blocking the sidewalk with no signs"]
+Loud Parties/Music/People:
+  name: Noise - party or music
+  desc: Loud parties, music or people causing noise disturbance.
+  ex: ["neighbors playing loud music at 2am", "huge party next door every weekend", "people yelling outside all night"]
+Work w/out Permit:
+  name: Construction without a permit
+  desc: Building or renovation work happening without a visible permit.
+  ex: ["they're renovating next door without a permit", "construction going on and no permit posted", "someone is building a deck without permission"]
+Heat - Excessive  Insufficient:
+  name: No heat or too much heat
+  desc: A rental unit with no heat, not enough heat, or heat that can't be turned down.
+  ex: ["no heat in my apartment and it's freezing", "the landlord hasn't turned the heat on", "heat is way too high and we can't control it"]
+Contractors Complaint:
+  name: Building contractor complaint
+  desc: A complaint about a building contractor - unsafe work, debris, damage to a neighboring property.
+  ex: ["the contractor next door is throwing debris into my yard", "builder damaged our fence", "contractor working unsafely on the roof"]
+General Lighting Request:
+  name: New or more street lighting
+  desc: A request for new or brighter street lighting in an area.
+  ex: ["our street is too dark, we need more lights", "can you add a streetlight in the alley", "the park path needs lighting"]
+Catchbasin:
+  name: Clogged storm drain
+  desc: A catch basin or storm drain that is clogged, flooding, broken or smells.
+  ex: ["the storm drain is clogged and the street floods", "catch basin full of leaves", "water pooling because the drain is blocked"]
+Ground Maintenance:
+  name: Park grounds maintenance
+  desc: Park grounds that need care - overgrown grass, litter, broken paths or full trash cans in a park.
+  ex: ["the grass in the park hasn't been mowed in weeks", "park trash cans overflowing", "the playground area is full of litter"]
+Tree Emergencies:
+  name: Fallen tree or branch
+  desc: A tree or large branch that has fallen or is about to fall on a street, sidewalk, car or home.
+  ex: ["a huge branch fell and is blocking the street", "tree came down on a car", "a tree is cracked and leaning over the sidewalk"]
+New Sign  Crosswalk or Pavement Marking:
+  name: New sign or crosswalk
+  desc: A request for a new traffic sign, crosswalk or road markings, or repainting faded lines.
+  ex: ["we need a crosswalk at this intersection", "the lane lines are completely faded", "can we get a children at play sign"]
+Working Beyond Hours:
+  name: Construction outside allowed hours
+  desc: Construction work happening early in the morning, late at night or on weekends outside permitted hours.
+  ex: ["construction started at 5am again", "they're working on the building on Sunday night", "jackhammering after 9pm"]
+Unsanitary Conditions - Establishment:
+  name: Unsanitary business
+  desc: A restaurant, store or other business with unsanitary conditions.
+  ex: ["the restaurant kitchen is filthy", "store has rats and dirty floors", "the cafe bathroom is disgusting and unsanitary"]
+Building Inspection Request:
+  name: Building inspection
+  desc: Request an inspection of a building for code compliance.
+  ex: ["I want my building inspected", "request an inspection for my unit", "can an inspector check this building"]
+Requests for Traffic Signal Studies or Reviews:
+  name: Traffic signal study
+  desc: Ask the city to study or change traffic signal timing or add a signal at an intersection.
+  ex: ["the light changes too fast for people to cross", "we need a traffic light at this dangerous corner", "please review the signal timing on Main St"]
+Encampments:
+  name: Encampment
+  desc: A homeless encampment or tents set up in a public space.
+  ex: ["there are tents set up under the bridge", "encampment growing at the park", "people living in tents on the sidewalk"]
+Maintenance Complaint - Residential:
+  name: Building maintenance complaint
+  desc: General maintenance problems in a residential building - broken door, stairs, common areas.
+  ex: ["the front door lock of my building is broken", "stairs in the hallway are falling apart", "landlord won't fix the common areas"]
+Equipment Repair:
+  name: Park equipment repair
+  desc: Broken park equipment - benches, fountains, fences, playground or court equipment.
+  ex: ["the swing at the playground is broken", "water fountain at the park doesn't work", "basketball hoop is bent"]
+Empty Litter Basket:
+  name: Full public trash can
+  desc: A public litter basket on the street that is full or overflowing.
+  ex: ["the trash can on the corner is overflowing", "public litter basket hasn't been emptied", "bin by the bus stop is full"]
+Transportation General Request:
+  name: Transportation question
+  desc: A general request or question for the Transportation Department not covered elsewhere.
+  ex: ["question about a resident parking permit", "who do I talk to about traffic on my street", "general question for transportation"]
+Mice Infestation - Residential:
+  name: Mice in a home
+  desc: Mice inside a home or apartment.
+  ex: ["we have mice in our apartment", "mice in the kitchen and the landlord won't do anything", "mouse droppings everywhere in my unit"]
+Street Light Knock Downs:
+  name: Knocked-down light pole
+  desc: A streetlight pole that has been hit, knocked down or is leaning.
+  ex: ["a car knocked down the light pole", "the streetlight pole is leaning over the road", "light pole lying on the sidewalk"]
+Missing Sign:
+  name: Missing street sign
+  desc: A street or traffic sign that is missing.
+  ex: ["the stop sign at my corner is gone", "street name sign is missing", "someone stole the no parking sign"]
+BWSC General Request:
+  name: Water and sewer issue
+  desc: Water, sewer or drainage issues handled by the Boston Water and Sewer Commission.
+  ex: ["water is bubbling up from the street", "sewer smell coming from the street", "water main leak on our road"]
+General Comments For a Program or Policy:
+  name: Comment on a city program
+  desc: A comment, compliment or complaint about a city program or policy.
+  ex: ["I want to complain about the new trash schedule", "thank you to the crew that fixed our street", "feedback about the bike lane program"]
+Unsafe Dangerous Conditions:
+  name: Unsafe building
+  desc: A building with dangerous conditions - collapsing porch, loose facade, structural problems.
+  ex: ["the porch on that house looks like it's about to collapse", "bricks falling off the building", "the back stairs are rotting and unsafe"]
+Electrical:
+  name: Electrical code problem
+  desc: Unsafe or illegal electrical work in a building.
+  ex: ["exposed wiring in my basement", "the electrical work in my apartment isn't up to code", "ungrounded outlets and a messy fuse box"]
+Public Works General Request:
+  name: Public Works question
+  desc: A general request or question for Public Works not covered elsewhere.
+  ex: ["question about public works", "when is the trash schedule changing", "general request for public works"]
+Fire Hydrant:
+  name: Fire hydrant problem
+  desc: A fire hydrant that is leaking, open, broken or damaged.
+  ex: ["the fire hydrant is leaking water", "hydrant was hit and is broken", "kids opened the fire hydrant"]
+Sidewalk Cover / Manhole:
+  name: Manhole or utility cover
+  desc: A manhole or utility cover that is missing, loose, broken or noisy.
+  ex: ["the manhole cover is missing", "loose manhole cover clanks every time a car drives over", "utility cover on the sidewalk is broken"]
+Major System Failure:
+  name: Major system failure
+  desc: A major failure of city infrastructure needing urgent public works attention.
+  ex: ["the whole block of streetlights is out", "major system failure on our street", "big infrastructure failure"]
+Chronic Dampness/Mold:
+  name: Mold in a home
+  desc: Mold or chronic dampness in a home or apartment.
+  ex: ["there's black mold in my bathroom", "the apartment is always damp and moldy", "mold growing on the walls"]
+Protection of Adjoining Property:
+  name: Neighbor construction affecting my property
+  desc: Construction next door that threatens or damages an adjoining property.
+  ex: ["excavation next door is cracking my foundation", "neighbor's construction damaged my wall", "they're digging right up against my house"]
+Food Alert - Confirmed:
+  name: Food safety alert
+  desc: A confirmed food safety problem such as food poisoning linked to a business.
+  ex: ["I got food poisoning from a restaurant", "several of us got sick after eating at this place", "food recall item still sold at a store"]
+Unsanitary Conditions - Food:
+  name: Unsanitary food handling
+  desc: Food sold or handled in unsanitary ways.
+  ex: ["the food truck workers don't wear gloves", "expired food on the shelves", "they're storing food on the floor"]
+PWD Graffiti:
+  name: Graffiti on city property
+  desc: Graffiti on public works property such as streets, signs, poles or bridges.
+  ex: ["graffiti on the light poles", "tags painted on the road", "graffiti on the street signs"]
+Construction Debris:
+  name: Construction debris
+  desc: Construction debris left on a sidewalk, street or lot.
+  ex: ["construction debris left on the sidewalk", "pile of drywall and wood from a renovation", "contractor left rubble in the street"]
+Park Improvement Requests:
+  name: Park improvement idea
+  desc: A request or idea to improve a park - new equipment, benches, features.
+  ex: ["the park needs more benches", "can we get a dog park here", "please add shade to the playground"]
+Parks Lighting/Electrical Issues:
+  name: Park lighting problem
+  desc: Lighting or electrical problems in a park.
+  ex: ["the lights on the park path are out", "tennis court lights don't work", "park is dark, the lamps are broken"]
+Illegal Vending:
+  name: Illegal vending
+  desc: Unlicensed street vendors.
+  ex: ["unlicensed vendor selling on the sidewalk", "someone selling stuff illegally outside the T", "street vendor with no permit"]
+Unsatisfactory Utilities - Electrical  Plumbing:
+  name: Broken utilities in a home
+  desc: Electrical or plumbing problems in a rental - no hot water, broken toilet, outlets not working.
+  ex: ["no hot water in my apartment for a week", "toilet broken and landlord won't fix it", "half the outlets in my unit don't work"]
+Work Hours-Loud Noise Complaints:
+  name: Street work noise
+  desc: Loud noise from public works or street work outside allowed hours.
+  ex: ["street work making noise at midnight", "loud road work early in the morning", "jackhammer on the road at night"]

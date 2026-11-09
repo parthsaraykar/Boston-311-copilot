@@ -1,0 +1,82 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "status": {
+   "enum": [
+    "routed",
+    "clarify",
+    "emergency",
+    "refused"
+   ]
+  },
+  "type": {
+   "type": "string"
+  },
+  "department": {
+   "type": "string"
+  },
+  "dept_code": {
+   "type": "string"
+  },
+  "queue": {
+   "type": "string"
+  },
+  "confidence": {
+   "type": "number"
+  },
+  "reason": {
+   "type": "string"
+  },
+  "language": {
+   "type": "string"
+  },
+  "urgency": {
+   "enum": [
+    "low",
+    "normal",
+    "high",
+    "emergency"
+   ]
+  },
+  "location_text": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "location": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "similar_open": {
+   "type": "array"
+  },
+  "question": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "message": {
+   "type": "string"
+  },
+  "text_scrubbed": {
+   "type": "string"
+  },
+  "mode": {
+   "type": "string"
+  },
+  "latency_ms": {
+   "type": "integer"
+  }
+ },
+ "required": [
+  "status",
+  "text_scrubbed",
+  "language",
+  "latency_ms"
+ ]
+}

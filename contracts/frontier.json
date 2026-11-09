@@ -1,0 +1,72 @@
+[
+ {
+  "target": 0.5,
+  "total_cost": 17173121.42,
+  "on_time_rate": 0.8965,
+  "crew_cost": 16033333.42,
+  "late_cost": 587288.0
+ },
+ {
+  "target": 0.55,
+  "total_cost": 17173121.42,
+  "on_time_rate": 0.8965,
+  "crew_cost": 16033333.42,
+  "late_cost": 587288.0
+ },
+ {
+  "target": 0.6,
+  "total_cost": 17194682.07,
+  "on_time_rate": 0.8995,
+  "crew_cost": 16087500.07,
+  "late_cost": 554682.0
+ },
+ {
+  "target": 0.65,
+  "total_cost": 17197115.4,
+  "on_time_rate": 0.9011,
+  "crew_cost": 16098333.4,
+  "late_cost": 546282.0
+ },
+ {
+  "target": 0.7,
+  "total_cost": 17199288.72,
+  "on_time_rate": 0.9072,
+  "crew_cost": 16180666.72,
+  "late_cost": 498622.0
+ },
+ {
+  "target": 0.75,
+  "total_cost": 17254032.08,
+  "on_time_rate": 0.9128,
+  "crew_cost": 16266250.08,
+  "late_cost": 467782.0
+ },
+ {
+  "target": 0.8,
+  "total_cost": 17279298.77,
+  "on_time_rate": 0.9194,
+  "crew_cost": 16326916.77,
+  "late_cost": 432382.0
+ },
+ {
+  "target": 0.85,
+  "total_cost": 17336858.1,
+  "on_time_rate": 0.9252,
+  "crew_cost": 16415750.1,
+  "late_cost": 401108.0
+ },
+ {
+  "target": 0.9,
+  "total_cost": 17400846.77,
+  "on_time_rate": 0.9319,
+  "crew_cost": 16482916.77,
+  "late_cost": 365430.0
+ },
+ {
+  "target": 0.95,
+  "total_cost": 17577468.02,
+  "on_time_rate": 0.9591,
+  "crew_cost": 16773250.02,
+  "late_cost": 219218.0
+ }
+]

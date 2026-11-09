@@ -1,0 +1,22 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "retrieval": {
+   "type": "object"
+  },
+  "llm": {
+   "type": "object"
+  },
+  "queue_from_location": {
+   "type": "object"
+  },
+  "primary": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "retrieval",
+  "primary"
+ ]
+}

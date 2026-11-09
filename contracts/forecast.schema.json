@@ -1,0 +1,67 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "plan_year": {
+   "type": "integer"
+  },
+  "forecast": {
+   "type": "array",
+   "items": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+     "dept": {
+      "type": "string"
+     },
+     "month": {
+      "type": "string"
+     },
+     "mean": {
+      "type": "number"
+     },
+     "p10": {
+      "type": "number"
+     },
+     "p90": {
+      "type": "number"
+     },
+     "model": {
+      "type": "string"
+     },
+     "backtest_wape": {
+      "type": "number"
+     },
+     "actual": {
+      "type": [
+       "number",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "dept",
+     "month",
+     "mean",
+     "p10",
+     "p90",
+     "model",
+     "backtest_wape",
+     "actual"
+    ]
+   }
+  },
+  "backtests": {
+   "type": "object"
+  },
+  "history": {
+   "type": "array"
+  }
+ },
+ "required": [
+  "plan_year",
+  "forecast",
+  "backtests",
+  "history"
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "cases": {
+   "type": "object"
+  },
+  "storm": {
+   "type": "object"
+  },
+  "monte_carlo": {
+   "type": "object"
+  },
+  "robust": {
+   "type": "object"
+  },
+  "smoothing": {
+   "type": "object"
+  },
+  "tornado": {
+   "type": "array"
+  }
+ },
+ "required": [
+  "cases",
+  "storm",
+  "monte_carlo",
+  "robust",
+  "smoothing",
+  "tornado"
+ ]
+}
