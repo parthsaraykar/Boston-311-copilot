@@ -28,8 +28,9 @@ This notebook runs the project end to end, from the same code the app uses:
 8. Proof on real data: the 2025 replay
 9. Other considerations: neighborhood equity, employee-logged work
 
-> **AI use.** This notebook and the code it runs were generated with an AI coding assistant (Claude Code) under the
-> team's direction. See the README section "How we used AI".
+> **AI use.** We built this project with Claude Code (an AI coding assistant) as a pair programmer: the team set the
+> requirements and design decisions and reviewed the results; the notebook and the code it runs were generated with
+> it. See the README section "How we used AI".
 """)
 
 code("""

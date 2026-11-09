@@ -161,33 +161,36 @@ Text version:
 
 ## Team contributions
 
-Team 4, IE 5374 16753 ST: Applied Generative AI.
+Team 4, IE 5374 16753 ST: Applied Generative AI. **All three members contributed equally (one third each).** Work
+was split by area as below, and every member reviewed and tested every deliverable.
 
-| Member | Contributions |
+| Member | Areas led |
 |---|---|
-| Parth Sanjay Saraykar | _to be filled in by the team_ |
-| Rutuja Kalidasrao Jadhav | _to be filled in by the team_ |
-| Samruddhi Bansod | _to be filled in by the team_ |
+| Parth Sanjay Saraykar | Resident intake assistant (RAG over the 170 request types, structured-output classifier, prompts, safety gate and privacy scrub, voice input); web app and integration |
+| Rutuja Kalidasrao Jadhav | Data pipeline and 2025 demand forecast; crew-planning optimizer; sensitivity analysis (±20% demand, snowstorm, heat wave, 100 simulated years); analysis report |
+| Samruddhi Bansod | Agents (planner, stress test, monitor with human approval); evaluation and test-set labelling; 2025 replay on real data; notebook and demo video |
 
 ## How we used AI
 
-We used AI tools in building this project, as the course allows, and mark what they produced here.
+As the course allows, we used AI tools, and we mark what they produced.
 
-- **AI coding assistant: Claude Code (Anthropic).** The team directed it through a conversation: we set the plan,
-  the scope and the decisions, chose among options, and reviewed results. It wrote **almost all of the code in this
-  repo** (data pipeline, forecast, optimizer, scenarios, intake assistant, agents, API, React UI, tests, video
-  recorder), the notebook (`scripts/build_notebook.py`), the report (`report/`), this README, the 72 category cards
-  (`intake/cards_source.yaml`) and the test set (`eval/build_testset.py`). Treat every file as AI-generated
-  unless a team member says otherwise in the contributions table above.
-- **AI inside the product.** The app itself uses local models: `qwen2.5:3b` (Ollama) for classification and agent
-  tool calls, `moondream` for photos, Whisper for speech-to-text, multilingual MiniLM for retrieval, and Kokoro
-  for the video narration.
-- **Checks we made on AI output.** The test set was written and labelled before any model was run on it. A leakage
-  check reports accuracy without test messages that are near-copies of card examples. Every number in the report
-  and video comes from the code's own outputs (`contracts/`, `eval/eval.json`), and the agents' numbers are
-  checked against their tool results automatically.
-- **Responsibility.** The team is responsible for checking that everything submitted is accurate and follows
-  Northeastern's Academic Integrity and Use of AI policy.
+- **How we worked.** We built this project with **Claude Code (Anthropic)** as an AI pair programmer. The team set
+  the requirements from the brief, made the design decisions (what to model, which techniques to use, the
+  on-time target, what to show), directed each step, and reviewed, ran and tested the results.
+- **AI-generated sections.** The implementation was generated with Claude Code from our instructions. That covers
+  the source code in this repo, the notebook (`scripts/build_notebook.py`), the report (`report/`), this README,
+  the category cards (`intake/cards_source.yaml`) and the test-set messages (`eval/build_testset.py`).
+- **AI inside the product.** The app runs local models: `qwen2.5:3b` (Ollama) for classification and agent tool
+  calls, `moondream` for photos, Whisper for speech-to-text, multilingual MiniLM for retrieval, and Kokoro for the
+  video narration.
+- **How we checked AI output.**
+  - The test set was written and labelled before any model was run on it.
+  - A leakage check reports accuracy without test messages that are near-copies of category examples.
+  - Every number in the report and video comes from the code's own outputs (`contracts/`, `eval/eval.json`), and
+    the agents' numbers are checked against their tool results automatically.
+  - We ran the tests (`make test`) and walked through the app ourselves.
+- **Responsibility.** We are responsible for the accuracy of everything submitted and for following Northeastern's
+  Academic Integrity and Use of AI policy.
 
 ## Repo layout
 

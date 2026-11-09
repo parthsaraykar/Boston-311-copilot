@@ -1,7 +1,7 @@
 # Boston 311 Copilot: report
 
 _IE 5374 Applied Generative AI · Module 7 Hackathon · Team 4 (Parth Sanjay Saraykar, Rutuja Kalidasrao Jadhav, Samruddhi Bansod)._
-_**AI-generated:** this report was drafted by an AI coding assistant (Claude Code) from the project's own outputs, under the team's direction; see README, "How we used AI"._
+_**AI-generated section:** this report was drafted with Claude Code (an AI coding assistant) from the project's own outputs, following the team's analysis decisions; the team reviewed it. See README, "How we used AI"._
 
 ## 1. Problem
 
